@@ -1,0 +1,2 @@
+bash is a shell program that lets us run many programs
+    using a text-based interface.

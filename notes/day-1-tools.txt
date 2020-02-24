@@ -1,0 +1,7 @@
+VS Code
+    text editor / IDE for many languages
+    VS Code can open folders as well as files
+    we can configure its built-in terminal to be Git Bash
+        instead of default Powershell.
+.NET Core SDK
+    helps us compile and run C#
