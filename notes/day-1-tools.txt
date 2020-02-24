@@ -5,3 +5,5 @@ VS Code
         instead of default Powershell.
 .NET Core SDK
     helps us compile and run C#
+Git for Windows
+    installs Git Bash
