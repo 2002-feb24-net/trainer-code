@@ -5,5 +5,12 @@ VS Code
         instead of default Powershell.
 .NET Core SDK
     helps us compile and run C#
+    dotnet CLI
+        dotnet new
+            create new .NET projects
+            e.g. "dotnet new console" - new console application template.
+        dotnet restore
+        dotnet build
+        dotnet run
 Git for Windows
     installs Git Bash
