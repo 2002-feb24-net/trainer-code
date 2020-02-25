@@ -14,14 +14,43 @@ some commands:
     rm <path>
         delete a file
     rm -r <path>
-        delete a directory
+        delete a directory with its contents
     mv <path1> <path2>
         rename/move a file/directory
+    touch
+        create a file
+    pwd
+        print working directory (folder you're in right now)
+
+some other things to know:
+    .. means parent directory
+        (we can chain it, e.g. cd ../../notes)
+    . means current directory (e.g. explorer .)
+    absolute paths
+        start with /
+        means the same no matter your current folder.
+        e.g. /c/revature/trainer-code
+    relative paths
+        do not start with /
+        are relative to the current folder.
+
 
 exercises (with just the command line):
     1. create an empty file
+        touch myfile.txt
     2. rename that file
+        mv myfile.txt newfile.txt
     3. create a new folder
+        mkdir myfolder
     4. move the file into the folder
+        mv newfile.txt myfolder
     5. delete the folder including its contents
+        rm -r myfolder
     6. remember about git pull and make sure your trainer-code folder is up to date.
+
+    7. look up "echo" and use it to output some text.
+    8. look up "which" and use it to find where dotnet is installed.
+    9. look up "grep" and use it to search a file for some text.
+    10. look up "find" and use it to search for all .txt files in some folder.
+    11. look up "cat" and use it to show file contents.
+    12. use echo to make a new file with some contents.
