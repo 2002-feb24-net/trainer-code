@@ -17,3 +17,11 @@ some commands:
         delete a directory
     mv <path1> <path2>
         rename/move a file/directory
+
+exercises (with just the command line):
+    1. create an empty file
+    2. rename that file
+    3. create a new folder
+    4. move the file into the folder
+    5. delete the folder including its contents
+    6. remember about git pull and make sure your trainer-code folder is up to date.
