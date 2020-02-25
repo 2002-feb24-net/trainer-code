@@ -1,0 +1,25 @@
+exercises:
+
+1. if this is a staircase of size 3:
+  #
+ ##
+###
+    make a program that prints a staircase of size 8.
+    (it should ascend up to the right, not descend down to the right.)
+
+2. make a program that prints a staircase of any size, taking the number from Console.ReadLine.
+
+3. make a program that prints the Collatz sequence (up until 1) for a given number,
+    taking the number from Console.ReadLine.
+    for any number n, the next number in its Collatz sequence is:
+    - if n is even, it is n divided by two.
+    - if n is odd, it is n times three, plus one.
+    for example, for 10, you should print:
+10
+5
+16
+8
+4
+2
+1
+    the Collatz conjecture says, this process eventually reaches 1 for every number.
