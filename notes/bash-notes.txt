@@ -33,7 +33,8 @@ some other things to know:
     relative paths
         do not start with /
         are relative to the current folder.
-
+    variables, $
+    PATH
 
 exercises (with just the command line):
     1. create an empty file
@@ -49,8 +50,20 @@ exercises (with just the command line):
     6. remember about git pull and make sure your trainer-code folder is up to date.
 
     7. look up "echo" and use it to output some text.
+        echo "My name is Nick"
     8. look up "which" and use it to find where dotnet is installed.
+        which dotnet
     9. look up "grep" and use it to search a file for some text.
+        grep grep notes/bash-notes.txt
     10. look up "find" and use it to search for all .txt files in some folder.
+        find . -name "*.txt"
     11. look up "cat" and use it to show file contents.
+        cat .gitignore
     12. use echo to make a new file with some contents.
+        echo "text" > filename.txt
+
+|, >, >>
+* stands for 0 or more of any character.
+bash keeps history of all your typed commands
+    up-arrow accesses history.
+tab completion
