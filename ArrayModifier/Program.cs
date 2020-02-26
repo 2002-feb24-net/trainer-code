@@ -24,14 +24,46 @@ namespace ArrayModifier
 
             for (int i = 0; i < a.Length; i++)
             {
-
-                Console.Write(a[i].ToString() + " ");
+                string numAsString = a[i].ToString();
+                Console.Write(numAsString + " ");
             }
             Console.WriteLine();
         }
 
+        static int[] InterpretStringAsArray3(string str)
+        {
+            string[] newArray = str.Split(" ");
+            int al = newArray.Length;
+            int[] numbArray = new int[al];
+            for (int i = 0; i < newArray.Length; i++)
+            {
+                numbArray[i] = int.Parse(newArray[i]);
+            }
+            //int[] numArray = Array.ConvertAll(newArray, int.Parse);
+            System.Console.WriteLine(numbArray);
+            return numbArray;
+        }
+
         static int[] InterpretStringAsArray(string str)
         {
+            // split array on space characters.
+            string[] parts = str.Split(' ');
+            // make a new int array with the right size.
+            int[] nums = new int[parts.Length];
+            // loop, for each string, convert it to an int.
+            for (int i = 0; i < parts.Length; i++)
+            {
+                // before this line, nums[i] is at its default of 0.
+                nums[i] = int.Parse(parts[i]);
+                // now, it has the numerical value of parts[i].
+            }
+            // send the new array back to the code that is using InterpretStringAsArray.
+            return nums;
+        }
+
+        static int[] InterpretStringAsArray2(string str)
+        {
+            return Array.ConvertAll(str.Split(' '), int.Parse);
         }
 
         static string GetInput()
