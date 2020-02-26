@@ -7,6 +7,7 @@ namespace ArrayModifier
         // accept input from user, list of numbers separated by spaces
         // interpret that as an int array
         // print the array's values back to the user
+
         // ask the user for some operation
         // print the array's new values to the user.
         static void Main(string[] args)
@@ -14,6 +15,12 @@ namespace ArrayModifier
             string input = GetInput();
             int[] array = InterpretStringAsArray(input);
             PrintArray(array);
+            // Console.ReadLine();
+            // if (input == "removenegatives")
+            // {
+            //     removeNegatives(array)
+            // }
+            // PrintArray(array);
         }
 
         // given any integer array,
