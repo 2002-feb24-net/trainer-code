@@ -1,18 +1,21 @@
 using System;
+using System.Collections.Generic;
 
 namespace RockPaperScissors
 {
     class RockPaperScissorsGame
     {
         // fields
-        int wins = 0;
-        int losses = 0;
-        int ties = 0;
+        // int wins = 0;
+        // int losses = 0;
+        // int ties = 0;
+
+        List<string> roundResults = new List<string>();
 
         // methods
         public void PlayRound()
         {
-            int roundNumber = wins + losses + ties + 1;
+            int roundNumber = roundResults.Count + 1;
 
             Console.Write("Round " + roundNumber + ". Enter R, P, or S: ");
             string input = Console.ReadLine();
@@ -25,7 +28,7 @@ namespace RockPaperScissors
             if (input == computersMove)
             {
                 // if the moves are the same, it's a tie
-                ties++;
+                roundResults.Add("tie");
                 Console.WriteLine("Tie game.");
             }
             else
@@ -36,36 +39,59 @@ namespace RockPaperScissors
                     // if the player said rock, the computer either said scissors or paper.
                     if (computersMove == "S")
                     {
-                        wins++;
+                        roundResults.Add("win");
                         Console.WriteLine("You won.");
                     }
                     else
                     {
-                        losses++;
+                        roundResults.Add("loss");
                         Console.WriteLine("You lose.");
                     }
                 }
                 else if (input == "P")
                 {
                     // if the player said paper
-                    // ...
+                    if (computersMove == "R")
+                    {
+                        roundResults.Add("win");
+                        Console.WriteLine("You won.");
+                    }
+                    else
+                    {
+                        roundResults.Add("loss");
+                        Console.WriteLine("You lose.");
+                    }
                 }
                 else
                 {
                     // if the player said scissors
-                    // ...
+                    if (computersMove == "P")
+                    {
+                        roundResults.Add("win");
+                        Console.WriteLine("You won.");
+                    }
+                    else
+                    {
+                        roundResults.Add("loss");
+                        Console.WriteLine("You lose.");
+                    }
                 }
             }
         }
 
         public void PrintSummary()
         {
-            // ...
+            // print out the round results list
+            foreach (string result in roundResults)
+            {
+                Console.Write(result + " ");
+            }
+            Console.WriteLine(); // line break
         }
 
         string DecideMove()
         {
-            if (losses == 0)
+            if (!roundResults.Contains("loss"))
             {
                 return "P";
             }
