@@ -18,9 +18,44 @@ namespace RockPaperScissors
             string input = Console.ReadLine();
 
             string computersMove = DecideMove();
+            Console.WriteLine("Computer chose " + computersMove);
 
             // e.g... a bunch of nested if-else
             // compare input and computersMove
+            if (input == computersMove)
+            {
+                // if the moves are the same, it's a tie
+                ties++;
+                Console.WriteLine("Tie game.");
+            }
+            else
+            {
+                // otherwise, it's either a player win or a player loss.
+                if (input == "R")
+                {
+                    // if the player said rock, the computer either said scissors or paper.
+                    if (computersMove == "S")
+                    {
+                        wins++;
+                        Console.WriteLine("You won.");
+                    }
+                    else
+                    {
+                        losses++;
+                        Console.WriteLine("You lose.");
+                    }
+                }
+                else if (input == "P")
+                {
+                    // if the player said paper
+                    // ...
+                }
+                else
+                {
+                    // if the player said scissors
+                    // ...
+                }
+            }
         }
 
         public void PrintSummary()
