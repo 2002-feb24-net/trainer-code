@@ -21,12 +21,24 @@ namespace DemoObject
             Product cereal = new Product();
             cereal.SetValues("21", cerealAmount, 4.5);
             Console.WriteLine(cereal);
+
+            Product shoes = new Product();
+            shoes.SetValues("2231", 4 * 5 - 23, 4);
+            Console.WriteLine(shoes);
         }
 
         static int GetStock(string name)
         {
-            Console.Write("Enter quantity of product " + name + ": ");
-            return int.Parse(Console.ReadLine());
+            int quantity;
+
+            do
+            {
+                Console.Write("Enter quantity of product " + name + ": ");
+                quantity = int.Parse(Console.ReadLine());
+            } while (quantity < 0); // if negative quantity, prompt again
+
+            // if we got this far, the user must have finally entered a positive quantity.
+            return quantity;
         }
     }
 }
