@@ -52,22 +52,25 @@ namespace Matrices
 
         public override string ToString()
         {
-            string result = "";
+            string result = "[";
             for (int i = 0; i < _rows; i++)
             {
-                result += "[";
+                result += " ";
                 // for each row...
                 for (int j = 0; j < _cols; j++)
                 {
                     // for each column in that row
                     result += _data[i, j] + " ";
                 }
-                result += "]";
                 if (i < _rows - 1)
                 {
                     result += "\n"; // line break character, aka newline
                     // (we want one between each line but not at the very end
                     // of the string)
+                }
+                else
+                {
+                    result += "]";
                 }
             }
             return result;
