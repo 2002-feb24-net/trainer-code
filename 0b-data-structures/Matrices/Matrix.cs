@@ -76,6 +76,11 @@ namespace Matrices
                 }
             }
             _data = newData;
+
+            // swap rows and cols
+            int swap = _rows;
+            _rows = _cols;
+            _cols = swap;
         }
 
         public override string ToString()
