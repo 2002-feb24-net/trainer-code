@@ -37,5 +37,23 @@ namespace Matrices
             // | 3 6 |
             // | 0 1 |
         }
+
+        void TestingImmutableMatrix()
+        {
+            ImmutableMatrix matrix = new ImmutableMatrix(new int[,]
+            {
+                {2, 3},
+                {0, -1}
+            });
+            ImmutableMatrix matrix2 = new ImmutableMatrix(new int[,]
+            {
+                {0, 1},
+                {1, 0}
+            });
+
+            ImmutableMatrix matrix3 = matrix.Add(matrix2);
+            // | 2  4 |
+            // | 1 -1 |
+        }
     }
 }

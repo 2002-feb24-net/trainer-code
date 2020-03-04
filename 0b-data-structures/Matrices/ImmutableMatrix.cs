@@ -6,7 +6,7 @@ namespace Matrices
     {
         int[,] _data;
 
-        ImmutableMatrix(int[,] data)
+        public ImmutableMatrix(int[,] data)
         {
             _data = new int[data.GetLength(0), data.GetLength(1)];
             Array.Copy(data, _data, data.Length);
