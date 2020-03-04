@@ -30,5 +30,27 @@ namespace Matrices
 
             return new ImmutableMatrix(resultData);
         }
+
+        public override string ToString()
+        {
+            string result = "[";
+            for (int i = 0; i < _data.GetLength(0); i++)
+            {
+                result += " ";
+                for (int j = 0; j < _data.GetLength(1); j++)
+                {
+                    result += _data[i, j] + " ";
+                }
+                if (i < _data.GetLength(0) - 1)
+                {
+                    result += "\n";
+                }
+                else
+                {
+                    result += "]";
+                }
+            }
+            return result;
+        }
     }
 }

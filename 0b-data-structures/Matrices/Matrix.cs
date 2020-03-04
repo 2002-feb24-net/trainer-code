@@ -27,6 +27,10 @@ namespace Matrices
             _data[row, col] = value;
         }
 
+        // 2. some common matrix operations
+        //    (matrix addition, matrix negation,
+        //     multiplication, transpose)
+
         public void Add(Matrix other)
         {
 
@@ -75,9 +79,5 @@ namespace Matrices
             }
             return result;
         }
-
-        // 2. some common matrix operations
-        //    (matrix addition, matrix negation,
-        //     multiplication, transpose)
     }
 }
