@@ -10,11 +10,10 @@ namespace Matrices
             // you can write code to test out your
             // Matrix class
 
-            Matrix matrix = new Matrix();
+            Matrix matrix = new Matrix(2, 2);
 
             // | 0 0 |
             // | 0 0 |
-            matrix.ClearAndSetDimension(2, 2);
             Console.WriteLine(matrix.ToString() + "\n");
 
             matrix.SetData(row: 0, col: 0, value: 2);

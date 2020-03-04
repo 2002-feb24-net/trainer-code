@@ -10,6 +10,29 @@ namespace Matrices
         int _rows;
         int _cols;
 
+        // every class always has at least one constructor
+        // if we don't write one ourselves,
+        // there is an automatic "default constructor", which looks like:
+
+        // public Matrix()
+        // {
+        // }
+
+        // we could have that zero-parameter ctor set up some defaults:
+        public Matrix()
+        {
+            ClearAndSetDimension(1, 1);
+        }
+
+        public Matrix(int rows, int cols)
+        {
+            if (rows < 1 || cols < 1)
+            {
+                Console.WriteLine("impossible matrix");
+            }
+            ClearAndSetDimension(rows, cols);
+        }
+
         // methods
         // 1. some way to fill in the data
 
