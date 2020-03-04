@@ -31,6 +31,32 @@ namespace Matrices
             return new ImmutableMatrix(resultData);
         }
 
+        public ImmutableMatrix Negate()
+        {
+            int[,] resultData = new int[_data.GetLength(0), _data.GetLength(1)];
+            for (int i = 0; i < _data.GetLength(0); i++)
+            {
+                for (int j = 0; j < _data.GetLength(1); j++)
+                {
+                    resultData[i, j] = -_data[i, j];
+                }
+            }
+            return new ImmutableMatrix(resultData);
+        }
+
+        public ImmutableMatrix Transpose()
+        {
+            int[,] resultData = new int[_data.GetLength(1), _data.GetLength(0)];
+            for (int i = 0; i < _data.GetLength(0); i++)
+            {
+                for (int j = 0; j < _data.GetLength(1); j++)
+                {
+                    resultData[j, i] = _data[i, j];
+                }
+            }
+            return new ImmutableMatrix(resultData);
+        }
+
         public override string ToString()
         {
             string result = "[";

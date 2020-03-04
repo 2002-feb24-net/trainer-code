@@ -15,13 +15,13 @@ namespace Matrices
             // | 0 0 |
             // | 0 0 |
             matrix.ClearAndSetDimension(2, 2);
-            Console.WriteLine(matrix + "\n");
+            Console.WriteLine(matrix.ToString() + "\n");
 
             matrix.SetData(row: 0, col: 0, value: 2);
             matrix.SetData(row: 0, col: 1, value: 5);
             matrix.SetData(row: 1, col: 0, value: -1);
             matrix.SetData(row: 1, col: 1, value: 0);
-            Console.WriteLine(matrix + "\n");
+            Console.WriteLine(matrix.ToString() + "\n");
 
             Matrix matrix2 = new Matrix();
             matrix2.ClearAndSetDimension(2, 2);
@@ -29,12 +29,22 @@ namespace Matrices
             matrix2.SetData(row: 0, col: 1, value: 1);
             matrix2.SetData(row: 1, col: 0, value: 1);
             matrix2.SetData(row: 1, col: 1, value: 1);
-            Console.WriteLine(matrix2 + "\n");
+            Console.WriteLine(matrix2.ToString() + "\n");
 
             matrix.Add(matrix2);
             // | 3 6 |
             // | 0 1 |
-            Console.WriteLine(matrix + "\n");
+            Console.WriteLine(matrix.ToString() + "\n");
+
+            matrix.Negate();
+            // | -3 -6 |
+            // |  0 -1 |
+            Console.WriteLine(matrix.ToString() + "\n");
+
+            matrix.Transpose();
+            // | -3  0 |
+            // | -6 -1 |
+            Console.WriteLine(matrix.ToString() + "\n");
         }
 
         void TestingImmutableMatrix()

@@ -54,6 +54,30 @@ namespace Matrices
             }
         }
 
+        public void Negate()
+        {
+            for (int i = 0; i < _rows; i++)
+            {
+                for (int j = 0; j < _cols; j++)
+                {
+                    _data[i, j] *= -1;
+                }
+            }
+        }
+
+        public void Transpose()
+        {
+            int[,] newData = new int[_cols, _rows];
+            for (int i = 0; i < _rows; i++)
+            {
+                for (int j = 0; j < _cols; j++)
+                {
+                    newData[j, i] = _data[i, j];
+                }
+            }
+            _data = newData;
+        }
+
         public override string ToString()
         {
             string result = "[";
