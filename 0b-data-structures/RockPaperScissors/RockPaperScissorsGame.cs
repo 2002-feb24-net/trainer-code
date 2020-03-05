@@ -20,7 +20,11 @@ namespace RockPaperScissors
             Console.Write("Round " + roundNumber + ". Enter R, P, or S: ");
             string input = Console.ReadLine();
 
-            string computersMove = DecideMove();
+            var computersMove = DecideMove();
+
+            // some people put var literally everywhere
+
+
             Console.WriteLine("Computer chose " + computersMove);
 
             // e.g... a bunch of nested if-else

@@ -6,14 +6,14 @@ namespace RockPaperScissors
     {
         static void Main(string[] args)
         {
-            RockPaperScissorsGame game = new RockPaperScissorsGame();
+            var game = new RockPaperScissorsGame();
 
             bool readyToQuit = false;
 
             while (!readyToQuit)
             {
                 Console.Write("Do you want to play a round? (y/n)");
-                string input = Console.ReadLine();
+                var input = Console.ReadLine();
 
                 if (input == "n")
                 {
