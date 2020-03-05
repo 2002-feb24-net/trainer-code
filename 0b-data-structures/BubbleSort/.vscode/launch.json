@@ -14,7 +14,9 @@
             "args": [],
             "cwd": "${workspaceFolder}",
             // For more information about the 'console' field, see https://aka.ms/VSCode-CS-LaunchJson-Console
-            "console": "internalConsole",
+            // switching "internalConsole" to "integratedTerminal"
+            // here lets you use console input.
+            "console": "integratedTerminal",
             "stopAtEntry": false
         },
         {
