@@ -6,7 +6,9 @@ namespace BubbleSort
     {
         static void Main(string[] args)
         {
-            int[] array1 = { 3, 4, 2, 1, 6 };
+            // int[] array1 = { 3, 4, 2, 1, 6 }; // takes 5 swaps
+            // int[] array1 = { 1, 2, 3, 4, 6 }; // takes 0 swaps
+            int[] array1 = { 6, 4, 3, 2, 1 }; // takes 10 swaps
             Console.WriteLine("before sort: [" + string.Join(",", array1) + "]");
 
             BubbleSort(array1);
