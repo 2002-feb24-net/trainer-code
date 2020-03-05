@@ -16,10 +16,12 @@ namespace MergeSort
             Console.WriteLine("after sort: [" + string.Join(",", data) + "]");
         }
 
-        // 1. split the array in half, left and right
-        // 2. keep doing that for each subarray, until you can't anymore cause it's size 1.
-        // 3. sort each subarray using this method that knows how to sort arrays.
-        // 4. combine your two sorted subarrays, one by one through both of them
+        // 1. if the array is size 1, it's already sorted. otherwise, it's bigger,
+        //       and we'll split it up to get two simpler sub-problems.
+        // 2. split the array into two subarrays down the middle.
+        // 3. sort each subarray using this method that knows how to sort arrays,
+        //       the one we're writing now.
+        // 4. combine your two sorted subarrays, one by one through both of them,
         //      keeping the result sorted overall.
         static void MergeSort(int[] array)
         {
