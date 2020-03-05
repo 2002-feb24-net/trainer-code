@@ -10,6 +10,49 @@ namespace Matrices
         int _rows;
         int _cols;
 
+        // things we can do with properties:
+        // - get-only property with a backing field
+        // - get-only property with some constant value
+        // - property based on one field, with validation in set
+        // - property based on several fields
+        // - auto-implemented property (auto-property)
+
+        // creates a hidden private backing field
+        public int Data { get; set; }
+        // in c#, it's bad practice to ever have public fields
+
+        public int Cols
+        {
+            get { return _cols; }
+            set
+            {
+                // great place for validation logic
+                if (value > 0)
+                {
+                    ClearAndSetDimension(_rows, value);
+                }
+            }
+        }
+
+        // property
+        public int Rows
+        {
+            get
+            {
+                Console.WriteLine("accessing Rows property");
+                return _rows;
+            }
+            set
+            {
+                // inside a property setter, you have a special keyword "value"
+                // which is what the code setting the property put to the right
+                // of the equals sign.
+                int incomingValue = value;
+                // Console.WriteLine("setting Rows not allowed! doing nothing.");
+                ClearAndSetDimension(value, _cols);
+            }
+        }
+
         // every class always has at least one constructor
         // if we don't write one ourselves,
         // there is an automatic "default constructor", which looks like:

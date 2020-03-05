@@ -22,8 +22,18 @@ namespace Matrices
             matrix.SetData(row: 1, col: 1, value: 0);
             Console.WriteLine(matrix.ToString() + "\n");
 
+            // whoops, i forgot what size the matrix is
+            int rows = matrix.Rows;
+            // int cols = matrix._cols;
+
+            // matrix.GetRows() = 10; // error
+            matrix.Rows = 5; // no error; i did implement a set, but it won't do anything
+
+
             Matrix matrix2 = new Matrix();
-            matrix2.ClearAndSetDimension(2, 2);
+            // matrix2.ClearAndSetDimension(2, 2);
+            matrix.Rows = 2;
+            matrix.Cols = 2;
             matrix2.SetData(row: 0, col: 0, value: 1);
             matrix2.SetData(row: 0, col: 1, value: 1);
             matrix2.SetData(row: 1, col: 0, value: 1);
@@ -63,5 +73,12 @@ namespace Matrices
             // | 2  4 |
             // | 1 -1 |
         }
+    }
+
+    class Triangle
+    {
+        int side1, side2, side3;
+        public int Sides { get { return 3; } }
+        public int Perimeter { get { return side1 + side2 + side3; } }
     }
 }
