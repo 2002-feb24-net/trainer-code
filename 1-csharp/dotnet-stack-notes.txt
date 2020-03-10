@@ -1,0 +1,114 @@
+https://docs.microsoft.com/en-us/dotnet/standard/components
+https://docs.microsoft.com/en-us/dotnet/standard/glossary
+
+
+CLI common language infrastructure specification
+the standardized set of things all .NET implementations have.
+    VES virtual execution system, aka the runtime.
+        the execution environment for a .NET application
+    Standard Libraries
+        includes:
+        BCL base class library
+            common data types for numbers, strings, etc.
+            exceptions, attributes, collections, delegates, I/O, threads
+        also reflection, networking, parallel programming
+    CTS common type system
+        defines classes, structs, enums, interfaces, delegates,
+        access modifiers, inheritance, value/reference types, etc.
+
+.NET Standard - not an implementation
+    versioned set of APIs that are implemented by the
+        Base Class Library of a .NET implementation
+    libraries can compile targetting .NET Standard and
+        the same assembly can be used by any .NET implementation
+        compatible with that version of .NET Standard.
+
+implementations:
+    .NET Framework
+        from 2002, original implementation, Windows-only
+        last version 4.8 released 2019
+        gets updates from Windows Update
+        CLR common language runtime (VES)
+            a virtual machine that runs intermediate language
+            JIT just in time compiler
+                gets assembly, compiles to machine code on the fly
+            memory management / garbage collection
+            exception handling
+            thread management
+        FCL framework class library (Standard Libraries)
+        implements .NET Standard 2.0, but won't go any further than that
+    .NET Core
+        from 2016, redesigned and architecturally simplified successor to .NET Framework
+        open source, cross-platform, better support for DevOps, command-line, container scenarios
+        gets updates from manual installs / NuGet
+        .NET Framework frameworks were gradually ported to or redesigned for Core
+            (like EF Core, EF 6, ASP.NET Core, WinForms, WPF), finished though
+        CoreCLR (VES)
+            the CLR for Core
+            has a JIT as well, RyuJIT
+            all the features of the CLR
+        CoreFX (Standard Libraries)
+    Mono
+        from 2004, open source, cross-platform (Unix)
+            originally reverse-engineered from .net framework
+            but only some frameworks were implemented
+        3rd party at first, adopted by microsoft from 2016
+        Mono runtime (VES)
+        more support for AOT compilation (alternative to JIT), but JIT too
+        used by Xamarin for mobile
+            runtimes for iOS, Android, Mac
+        used by Unity for games
+    UWP
+        for windows 10/xbox apps
+        uses .NET Native AOT compiler & runtime (VES)
+        CoreFx (Standard Libraries), same as .NET Core
+    older kinda abandoned implementations:
+        .NET Compact Framework (Windows Phone)
+        Micro Framework (embedded) (new 3rd party successor nanoFramework)
+        Portable.NET (hostile 3rd party GNU version)
+
+future plans (late 2020+)
+    deprecate .NET Framework (but keep it supported with fixes)
+    keep CoreCLR and Mono runtimes, converge them so they
+        are more interchangable
+    rename .NET Core as .NET
+    transition to using nullable reference types in C#
+    move Mono/Xamarin to use CoreFx
+
+managed code
+    portability (same platform, different architecture)
+    memory management
+    performance
+    inter-operability (platform-independent)
+
+Visual Studio - traditional IDE
+    dates back to 1997
+    some older frameworks focused more on GUI development scenarios,
+    or otherwise tied down to Visual Studio. with .NET Core, much more
+    freedom in tools.
+    excellent reputation for a free IDE
+    supports many languages, not just .NET languages
+    written in .NET Framework, Windows-only
+    there's a version for Mac in Mono, but it's not as good
+Visual Studio Code - new
+    from 2015
+    Electron app, cross-platform
+    usage focus on extensibility, many reliable vendor & third-party extensions
+    grown in popularity since launch, now very popular
+    more lightweight in some ways
+MSBuild - build system
+Roslyn - C# compiler (and VB)
+    also provides source code analysis, intellisense, etc.
+    (older c# compiler is csc.exe, distributed with .net framework)
+
+how dooes .NET Framework manage third-party dependencies?
+    on each machine, assemblies go in the GAC, global assembly cache
+    strongly named: no two assemblies can have the same name
+    nothing ever gets removed from it
+    C:\Windows\assembly and C:\Windows\Microsoft.NET\assembly
+
+now instead, .NET Core uses:
+    a cross-platform package manager called NuGet, which also downloads those assemblies from
+    registries, especially the default one on nuget.org.
+    configured with NuGet.Config (for older projects), or PackageReferences in the csproj file.
+    doesn't keep around unused assemblies
