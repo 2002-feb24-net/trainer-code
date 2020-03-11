@@ -7,7 +7,9 @@ namespace RockPaperScissors.App
     {
         static void Main(string[] args)
         {
-            var game = new RockPaperScissorsGame();
+            InputterOutputter inputOutputSpecific = new InputterOutputter();
+            IInputterOutputter inputOutputGeneral = inputOutputSpecific; // this is called upcasting
+            var game = new RockPaperScissorsGame(inputOutputGeneral);
 
             bool readyToQuit = false;
 
