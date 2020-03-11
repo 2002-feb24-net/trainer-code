@@ -11,6 +11,8 @@ namespace RockPaperScissors.App
             IInputterOutputter inputOutputGeneral = inputOutputSpecific; // this is called upcasting
             var game = new RockPaperScissorsGame(inputOutputGeneral, new RandomStrategy());
 
+            //var game = new RockPaperScissorsGame(inputOutputGeneral, new SomeOtherStrategy());
+
             bool readyToQuit = false;
 
             while (!readyToQuit)
