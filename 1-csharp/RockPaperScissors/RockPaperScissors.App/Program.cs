@@ -1,4 +1,5 @@
-﻿using System;
+﻿using RockPaperScissors.Library;
+using System;
 
 namespace RockPaperScissors.App
 {

@@ -2,9 +2,9 @@
 using System.Collections.Generic;
 using System.Text;
 
-namespace RockPaperScissors.App
+namespace RockPaperScissors.Library
 {
-    class RockPaperScissorsGame
+    public class RockPaperScissorsGame
     {
         // fields
         // int wins = 0;
