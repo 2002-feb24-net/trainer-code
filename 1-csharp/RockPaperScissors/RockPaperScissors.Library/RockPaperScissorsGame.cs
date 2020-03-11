@@ -14,13 +14,15 @@ namespace RockPaperScissors.Library
         // we use interface types to allow for flexibility in our code
         // "i need some input and output but i don't care how
         IInputterOutputter _io; // filled in by constructor
+        IRpsStrategy _strategy;
 
         List<string> roundResults = new List<string>();
 
         // constructor
-        public RockPaperScissorsGame(IInputterOutputter io)
+        public RockPaperScissorsGame(IInputterOutputter io, IRpsStrategy strategy)
         {
             _io = io;
+            _strategy = strategy;
             // we're using a principle called dependency inversion here
         }
 
@@ -32,7 +34,7 @@ namespace RockPaperScissors.Library
             Output("Round " + roundNumber + ". Enter R, P, or S: ");
             string input = Input();
 
-            var computersMove = DecideMove();
+            var computersMove = _strategy.DecideMove(roundResults);
 
             // some people put var literally everywhere
 
@@ -131,14 +133,7 @@ namespace RockPaperScissors.Library
         // in the Program class, instantiate one of your strategies and pass it to the game
 
         // extra: ask the user which strategy he wants to play against and create the corresponding object.
-        string DecideMove()
-        {
-            if (!roundResults.Contains("loss"))
-            {
-                return "P";
-            }
-            return "S";
-        }
+
     }
 }
 
