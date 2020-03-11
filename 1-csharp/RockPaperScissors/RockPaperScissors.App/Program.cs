@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RockPaperScissors
+namespace RockPaperScissors.App
 {
     class Program
     {
