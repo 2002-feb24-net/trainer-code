@@ -4,36 +4,36 @@ using System.Text;
 
 namespace InheritanceMammalCatHuman
 {
-    class Cat
+    class Cat : Mammal
     {
-        public bool     hasFur       = true;
+/*        public bool     hasFur       = true;
         public int      numLegs      { get; set; }
         public int      avgHeartRate { get; set; }
-        public String   breathsWith  = "lungs";
+        public String   breathsWith  = "lungs";*/
+        
         /*Add a characteristic specific to cats*/
 
         //default constructor
-        public Mammal()
+        public Cat()
         {
 
         }
 
         //override constructor
-        public Mammal(/*set the four fields*/)
+        public Cat(bool hasFur, int numLegs, int ahr, String breathsWith)
         {
-
+            this.hasFur = hasFur;
+            this.numLegs = numLegs;
+            avgHeartRate = ahr;
+            this.breathsWith = breathsWith;
         }
 
-        public String Says()
+        public override String Says()
         {
-            /*what does the amimal say?*/
+            return $"meooow fft fft";
         }
 
-        public void GetAvgHeartRate()
-        {
-            /*how many beats per minute?*/
 
-        }
 
         /*Add an action specific to cats*/
 

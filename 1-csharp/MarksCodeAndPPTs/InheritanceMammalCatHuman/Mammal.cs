@@ -5,7 +5,7 @@ using System.Text;
 namespace InheritanceMammalCatHuman
 {
     /*add the modifier so that this class won't be instantiated*/ 
-    class Mammal
+    public abstract class Mammal
     {
         public bool     hasFur       = true;
         public int      numLegs      { get; set; }
@@ -18,21 +18,21 @@ namespace InheritanceMammalCatHuman
 
         }
 
-        //parameterized override constructor
-        public Mammal(/*set the four fields*/)
+        //parameterized overloaded constructor
+        public Mammal(bool hasFur, int numLegs, int ahr, String breathsWith)
         {
-
+            this.hasFur = hasFur;
+            this.numLegs = numLegs;
+            avgHeartRate = ahr;
+            this.breathsWith = breathsWith;
         }
 
-        public String Says()
-        {
-            /*what does the animal say?*/
-        }
+        //overtride this
+        public abstract String Says();
 
-        public void GetAvgHeartRate()
+        public int GetAvgHeartRate()
         {
-            /*how many beats per minute?*/
-
+            return avgHeartRate; 
         }
 
 
