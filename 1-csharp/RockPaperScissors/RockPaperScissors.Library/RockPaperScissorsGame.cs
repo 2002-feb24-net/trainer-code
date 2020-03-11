@@ -11,22 +11,33 @@ namespace RockPaperScissors.Library
         // int losses = 0;
         // int ties = 0;
 
+        // we use interface types to allow for flexibility in our code
+        // "i need some input and output but i don't care how
+        IInputterOutputter _io; // filled in by constructor
+
         List<string> roundResults = new List<string>();
+
+        // constructor
+        public RockPaperScissorsGame(IInputterOutputter io)
+        {
+            _io = io;
+            // we're using a principle called dependency inversion here
+        }
 
         // methods
         public void PlayRound()
         {
             int roundNumber = roundResults.Count + 1;
 
-            Console.Write("Round " + roundNumber + ". Enter R, P, or S: ");
-            string input = Console.ReadLine();
+            Output("Round " + roundNumber + ". Enter R, P, or S: ");
+            string input = Input();
 
             var computersMove = DecideMove();
 
             // some people put var literally everywhere
 
 
-            Console.WriteLine("Computer chose " + computersMove);
+            Output("Computer chose " + computersMove + "\n");
 
             // e.g... a bunch of nested if-else
             // compare input and computersMove
@@ -34,7 +45,7 @@ namespace RockPaperScissors.Library
             {
                 // if the moves are the same, it's a tie
                 roundResults.Add("tie");
-                Console.WriteLine("Tie game.");
+                Output("Tie game.\n");
             }
             else
             {
@@ -45,12 +56,12 @@ namespace RockPaperScissors.Library
                     if (computersMove == "S")
                     {
                         roundResults.Add("win");
-                        Console.WriteLine("You won.");
+                        Output("You won.\n");
                     }
                     else
                     {
                         roundResults.Add("loss");
-                        Console.WriteLine("You lose.");
+                        Output("You lose.\n");
                     }
                 }
                 else if (input == "P")
@@ -59,12 +70,12 @@ namespace RockPaperScissors.Library
                     if (computersMove == "R")
                     {
                         roundResults.Add("win");
-                        Console.WriteLine("You won.");
+                        Output("You won.\n");
                     }
                     else
                     {
                         roundResults.Add("loss");
-                        Console.WriteLine("You lose.");
+                        Output("You lose.\n");
                     }
                 }
                 else
@@ -73,27 +84,53 @@ namespace RockPaperScissors.Library
                     if (computersMove == "P")
                     {
                         roundResults.Add("win");
-                        Console.WriteLine("You won.");
+                        Output("You won.\n");
                     }
                     else
                     {
                         roundResults.Add("loss");
-                        Console.WriteLine("You lose.");
+                        Output("You lose.\n");
                     }
                 }
             }
         }
 
+        private void Output(string str)
+        {
+            _io.Output(str);
+        }
+
+        private string Input()
+        {
+            return _io.Input();
+        }
+
         public void PrintSummary()
         {
             // print out the round results list
+            string output = "";
             foreach (string result in roundResults)
             {
-                Console.Write(result + " ");
+                output += result + " ";
             }
-            Console.WriteLine(); // line break
+            output += "\n"; // line break
+            Output(output);
         }
 
+        // exercise:
+        // make a IRpsStrategy interface in this project
+        // which can Decide a Move.
+        // (if you want, use a round results parameter)
+        
+        // modify this class to use some implementation of that interface,
+        // just like how now it uses some implementation of IInputterOutputter for I/O.
+
+        // write two classes that each implement that strategy interface
+        // for two different strategies.
+
+        // in the Program class, instantiate one of your strategies and pass it to the game
+
+        // extra: ask the user which strategy he wants to play against and create the corresponding object.
         string DecideMove()
         {
             if (!roundResults.Contains("loss"))
