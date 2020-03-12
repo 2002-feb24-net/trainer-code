@@ -16,7 +16,7 @@ namespace Generics
 
         // let's say for no reason
         // this class always starts out with one element in it
-        // which will be when you get from calling the default ctor on T
+        // which will be when you get from calling the default ctor on Tasdfasfd
         public SortedSequence()
         {
             Add(new T());
