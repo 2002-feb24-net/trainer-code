@@ -20,14 +20,14 @@ namespace Serialization
 
             string filePath = "../../../data.json";
 
-            List<Person> data;
+            List<Person> data = null;
             if (!File.Exists(filePath))
             {
                 data = GetInitialData();
 
-                string json = ConvertToJson(data);
+                string json1 = ConvertToJson(data);
 
-                WriteToFile(json, filePath);
+                WriteToFile(json1, filePath);
             }
             else
             {
@@ -35,6 +35,16 @@ namespace Serialization
                 // and deserialize it
             }
             ModifyPersons(data);
+
+            string json2 = ConvertToJson(data);
+
+            WriteToFile(json2, filePath);
+
+        }
+
+        private static void ModifyPersons(List<Person> data)
+        {
+            // do something to the persons to change that data
         }
 
         private static void WriteToFile(string text, string path)
