@@ -32,19 +32,31 @@ namespace Serialization
             else
             {
                 // read JSON from the file
+                string json3 = ReadFromFile(filePath);
                 // and deserialize it
+                data = JsonSerializer.Deserialize<List<Person>>(json3);
             }
             ModifyPersons(data);
 
             string json2 = ConvertToJson(data);
 
             WriteToFile(json2, filePath);
+        }
 
+        private static string ReadFromFile(string filePath)
+        {
+            var sr = new StreamReader(filePath);
+            string text = sr.ReadToEnd();
+            sr.Close();
+            return text;
         }
 
         private static void ModifyPersons(List<Person> data)
         {
-            // do something to the persons to change that data
+            foreach (var person in data)
+            {
+                person.Id++;
+            }
         }
 
         private static void WriteToFile(string text, string path)
