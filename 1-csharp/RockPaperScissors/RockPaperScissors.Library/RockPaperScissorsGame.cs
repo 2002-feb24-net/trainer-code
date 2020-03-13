@@ -13,9 +13,9 @@ namespace RockPaperScissors.Library
 
         // we use interface types to allow for flexibility in our code
         // "i need some input and output but i don't care how
-        IInputter _input; // filled in by constructor
-        IOutputter _output; // filled in by constructor
-        IRpsStrategy _strategy;
+        readonly IInputter _input; // filled in by constructor
+        readonly IOutputter _output; // filled in by constructor
+        readonly IRpsStrategy _strategy;
 
         List<string> roundResults = new List<string>();
 
