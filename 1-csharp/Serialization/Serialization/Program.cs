@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using System.IO;
 using System.Text;
 using System.Text.Json;
+using System.Threading.Tasks;
 
 namespace Serialization
 {
     class Program
     {
-        static void Main(string[] args)
+        static async Task Main(string[] args)
         {
             // in .NET, for XML serialization, we have
             //   - DataContractSerializer
@@ -41,7 +42,7 @@ namespace Serialization
             else
             {
                 // read JSON from the file
-                string json3 = ReadFromFile(filePath);
+                string json3 = await ReadFromFileAsync(filePath);
                 // and deserialize it
                 data = JsonSerializer.Deserialize<List<Person>>(json3);
             }
@@ -61,7 +62,7 @@ namespace Serialization
             }
         }
 
-        private static string ReadFromFile(string filePath)
+        private async static Task<string> ReadFromFileAsync(string filePath)
         {
             // using block is the same as
             // try-finally-not null-dispose but way quicker to write and look at
@@ -73,7 +74,15 @@ namespace Serialization
 
             // newer syntax for the same thing, using statement
             using var sr = new StreamReader(filePath);
-            string text = sr.ReadToEnd();
+            // async:
+            Task<string> textTask = sr.ReadToEndAsync();
+            // at this point, the operation might have already started
+            string text = await textTask;
+
+            // the await keyword pauses THIS method right here,
+            // *while still letting operations in the rest of the program continue*
+            // (e.g. other ongoing Tasks)
+
             return text;
             // (sr is disposed when this block ends, when this method returns)
         }
