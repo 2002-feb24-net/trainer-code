@@ -13,15 +13,17 @@ namespace RockPaperScissors.Library
 
         // we use interface types to allow for flexibility in our code
         // "i need some input and output but i don't care how
-        IInputterOutputter _io; // filled in by constructor
+        IInputter _input; // filled in by constructor
+        IOutputter _output; // filled in by constructor
         IRpsStrategy _strategy;
 
         List<string> roundResults = new List<string>();
 
         // constructor
-        public RockPaperScissorsGame(IInputterOutputter io, IRpsStrategy strategy)
+        public RockPaperScissorsGame(IInputter i, IOutputter o,  IRpsStrategy strategy)
         {
-            _io = io;
+            _input = i;
+            _output = o;
             _strategy = strategy;
             // we're using a principle called dependency inversion here
         }
@@ -99,12 +101,12 @@ namespace RockPaperScissors.Library
 
         private void Output(string str)
         {
-            _io.Output(str);
+            _output.Output(str);
         }
 
         private string Input()
         {
-            return _io.Input();
+            return _input.Input();
         }
 
         public void PrintSummary()
@@ -123,7 +125,7 @@ namespace RockPaperScissors.Library
         // make a IRpsStrategy interface in this project
         // which can Decide a Move.
         // (if you want, use a round results parameter)
-        
+
         // modify this class to use some implementation of that interface,
         // just like how now it uses some implementation of IInputterOutputter for I/O.
 
@@ -136,4 +138,3 @@ namespace RockPaperScissors.Library
 
     }
 }
-
