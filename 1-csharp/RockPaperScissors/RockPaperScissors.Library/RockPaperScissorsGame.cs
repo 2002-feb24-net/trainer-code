@@ -26,6 +26,12 @@ namespace RockPaperScissors.Library
             _output = o;
             _strategy = strategy;
             // we're using a principle called dependency inversion here
+
+            // the specific way we're doing that
+            // is called dependency injection
+            //   as opposed to going "new RandomStrategy()" right here,
+            //   i can get someone else to inject the dependency to me
+               //   (as a parameter, which is what i'm doing here)
         }
 
         // methods
