@@ -30,7 +30,7 @@ namespace Serialization
 
                 try
                 {
-                    WriteToFile(json1, filePath);
+                    await WriteToFileAsync(json1, filePath);
                 }
                 catch (Exception ex)
                 {
@@ -52,7 +52,7 @@ namespace Serialization
 
             try
             {
-                WriteToFile(json2, filePath);
+                await WriteToFileAsync(json2, filePath);
             }
             catch (Exception ex)
             {
@@ -95,7 +95,7 @@ namespace Serialization
             }
         }
 
-        private static void WriteToFile(string text, string path)
+        private async static Task WriteToFileAsync(string text, string path)
         {
             // exception handling is important for good user experience
             // as well as data correctness etc
@@ -111,7 +111,7 @@ namespace Serialization
                 // convert the string into an array of binary data (in UTF-8 encoding)
                 byte[] data = Encoding.UTF8.GetBytes(text);
 
-                file.Write(data);
+                await file.WriteAsync(data);
             }
             //catch
             //{
