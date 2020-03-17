@@ -1,4 +1,4 @@
-﻿using System;
+﻿ using System;
 using System.Collections.Generic;
 using System.Text;
 
@@ -16,6 +16,16 @@ namespace RockPaperScissors.Library
         readonly IInputter _input; // filled in by constructor
         readonly IOutputter _output; // filled in by constructor
         readonly IRpsStrategy _strategy;
+
+        // an event is a special kind of member which supports "publish/subscribe" workflow
+        // now that i've declared this event... anyone can subscribe to it.
+        // whenever the event gets "published", all the subscribers get called as methods.
+        // this class will fire this Log event whenever it wants to log...
+        //     but the Program class will subscribe to it, thereby deciding HOW/WHERE to log specifically.
+
+            // because this event's type is "Action<string>", when the event is fired/published,
+            //   it always sends a string along with it, which the subscribers get as a parameter.
+        public event Action<string> Log;
 
         List<string> roundResults = new List<string>();
 
@@ -39,8 +49,25 @@ namespace RockPaperScissors.Library
         {
             int roundNumber = roundResults.Count + 1;
 
-            Output("Round " + roundNumber + ". Enter R, P, or S: ");
-            string input = Input();
+            string input;
+            do
+            {
+                Output("Round " + roundNumber + ". Enter R, P, or S: ");
+                input = Input();
+                if (input == "R" || input == "P" || input == "S")
+                {
+                    break;
+                }
+                Output("Invalid input, try again."); // notify the user of errors
+
+                // fire the Log event, with this string (being the info we want to log somewhere)
+                // what code runs here depends entirely on who has subscribed to the event.
+                if (Log != null)
+                {
+                    Log($"User typed invalid input {input}");
+                }
+                // there is an awkwardness to events; if there are no subscribers when you fire it, it throws null exception.
+            } while (true);
 
             var computersMove = _strategy.DecideMove(roundResults);
 
