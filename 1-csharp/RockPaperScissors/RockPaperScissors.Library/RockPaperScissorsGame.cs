@@ -62,10 +62,8 @@ namespace RockPaperScissors.Library
 
                 // fire the Log event, with this string (being the info we want to log somewhere)
                 // what code runs here depends entirely on who has subscribed to the event.
-                if (Log != null)
-                {
-                    Log($"User typed invalid input {input}");
-                }
+                Log?.Invoke($"User typed invalid input {input}");
+
                 // there is an awkwardness to events; if there are no subscribers when you fire it, it throws null exception.
             } while (true);
 

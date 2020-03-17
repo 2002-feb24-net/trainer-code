@@ -65,7 +65,7 @@ namespace RockPaperScissors.App
 
         static void LogToFile(string str)
         {
-            var filePath = $"../../../{DateTime.Today.ToString("yyyy-M-dd--HH-mm-ss")}.log";
+            var filePath = $"../../../{DateTime.Today:yyyy-M-dd--HH-mm-ss}.log";
             Console.WriteLine(filePath);
 
             File.AppendAllText(filePath, str);
