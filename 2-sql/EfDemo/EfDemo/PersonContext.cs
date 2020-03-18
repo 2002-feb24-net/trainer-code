@@ -19,9 +19,9 @@ namespace EfDemo
         // one clumsy hardcoded easy one is OnConfiguring
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "Data Source=../../../persons.db";
+            //var connectionString = "Data Source=../../../persons.db";
             // need another package for this (Microsoft.EntityFrameworkCore.Sqlite)
-            optionsBuilder.UseSqlite(connectionString);
+            optionsBuilder.UseSqlite(config.ConnectionString);
         }
     }
 }
