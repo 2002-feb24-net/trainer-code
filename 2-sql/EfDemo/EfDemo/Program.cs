@@ -97,11 +97,16 @@ namespace EfDemo
             }
 
             // prompt for an ID and a name to add as a new person (call your method)
+            Console.Write("ID of person to add: ");
+            int id2 = int.Parse(Console.ReadLine());
+            Console.Write("Name of person to add: ");
+            string name = Console.ReadLine();
+            AddPerson(id2, name);
 
             // prompt for the name of a person to delete. (call your method)
             Console.Write("Name of person to delete: ");
-            string name = Console.ReadLine();
-            DeletePersonByName(name);
+            string name2 = Console.ReadLine();
+            DeletePersonByName(name2);
         }
 
         public static void DeletePersonByName(string name)
@@ -120,7 +125,17 @@ namespace EfDemo
 
         public static void AddPerson(int id, string name)
         {
-            // implement this with a new context
+            using var context = new PersonContext();
+
+            var person = new Person
+            {
+                Id = id,
+                Name = name
+            };
+
+            context.Persons.Add(person);
+
+            context.SaveChanges();
         }
 
         public static void Setup()
