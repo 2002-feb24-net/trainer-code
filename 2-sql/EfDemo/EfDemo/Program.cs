@@ -55,7 +55,7 @@ namespace EfDemo
             // ---------------------------
             Setup();
 
-            Console.WriteLine("Enter a person ID:");
+            Console.WriteLine("Enter a person ID to search for:");
 
             int id = int.Parse(Console.ReadLine());
 
