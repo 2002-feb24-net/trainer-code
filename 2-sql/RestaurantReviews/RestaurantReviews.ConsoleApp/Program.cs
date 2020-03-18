@@ -15,7 +15,7 @@ namespace RestaurantReviews.ConsoleApp
     {
         static void Main(string[] args)
         {
-            var dataSource = new List<Restaurant>();
+            using var dataSource = new RestaurantContext();
             var restaurantRepository = new RestaurantRepository(dataSource);
             var serializer = new XmlSerializer(typeof(List<Restaurant>));
 
@@ -26,8 +26,6 @@ namespace RestaurantReviews.ConsoleApp
                 Console.WriteLine();
                 Console.WriteLine("r:\tDisplay or modify restaurants.");
                 Console.WriteLine("a:\tAdd new restaurant.");
-                Console.WriteLine("s:\tSave data to database.");
-                Console.WriteLine("l:\tLoad data from database.");
                 Console.WriteLine();
                 Console.Write("Enter valid menu option, or \"q\" to quit: ");
                 var input = Console.ReadLine();
@@ -342,70 +340,6 @@ namespace RestaurantReviews.ConsoleApp
                         }
                     }
                     restaurantRepository.AddRestaurant(restaurant);
-                }
-                else if (input == "s")
-                {
-                    Console.WriteLine();
-                    var restaurants = restaurantRepository.GetRestaurants().ToList();
-                    try
-                    {
-                        using (var context = new RestaurantContext())
-                        {
-                            context.Database.EnsureCreated();
-                            foreach (var review in context.Reviews)
-                            {
-                                context.Reviews.Remove(review);
-                            }
-                            foreach (var restaurant in context.Restaurants)
-                            {
-                                context.Restaurants.Remove(restaurant);
-                            }
-                            context.Restaurants.AddRange(restaurants);
-                            context.SaveChanges();
-                        }
-                        Console.WriteLine("Success.");
-                    }
-                    catch (SecurityException ex)
-                    {
-                        Console.WriteLine($"Error while saving: {ex.Message}");
-                    }
-                    catch (IOException ex)
-                    {
-                        Console.WriteLine($"Error while saving: {ex.Message}");
-                    }
-                }
-                else if (input == "l")
-                {
-                    Console.WriteLine();
-                    List<Restaurant> restaurants;
-                    try
-                    {
-                        using (var context = new RestaurantContext())
-                        {
-                            restaurants = context.Restaurants.Include(r => r.Reviews).ToList();
-                        }
-                        Console.WriteLine("Success.");
-                        foreach (var item in restaurantRepository.GetRestaurants())
-                        {
-                            restaurantRepository.DeleteRestaurant(item.Id);
-                        }
-                        foreach (var item in restaurants)
-                        {
-                            restaurantRepository.AddRestaurant(item);
-                        }
-                    }
-                    catch (FileNotFoundException)
-                    {
-                        Console.WriteLine("No saved data found.");
-                    }
-                    catch (SecurityException ex)
-                    {
-                        Console.WriteLine($"Error while loading: {ex.Message}");
-                    }
-                    catch (IOException ex)
-                    {
-                        Console.WriteLine($"Error while loading: {ex.Message}");
-                    }
                 }
                 else if (input == "q")
                 {
