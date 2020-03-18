@@ -9,5 +9,6 @@ namespace EfDemo
         public int Id { get; set; }
         public string Name { get; set; }
         public List<Person> Children { get; set; }
+        public Address Address { get; set; }
     }
 }

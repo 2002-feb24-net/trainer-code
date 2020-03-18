@@ -69,7 +69,14 @@ namespace EfDemo
                     var person = new Person
                     {
                         Id = 1,
-                        Name = "Fred"
+                        Name = "Fred",
+                        Address = new Address
+                        {
+                            Id = 1,
+                            Street = "123 Main St",
+                            City = "Fort Worth",
+                            State = "TX"
+                        }
                     };
 
                     // this doesn't modify the database YET.
