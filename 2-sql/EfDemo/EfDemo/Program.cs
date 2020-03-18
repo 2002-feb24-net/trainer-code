@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Linq;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Internal;
 
 namespace EfDemo
@@ -52,7 +53,61 @@ namespace EfDemo
             // 3. dotnet run (runs the code in the CLR)
 
             // ---------------------------
+            Setup();
 
+            Console.WriteLine("Enter a person ID:");
+
+            int id = int.Parse(Console.ReadLine());
+
+            // get that Person from the DB by ID.
+            using (var context = new PersonContext())
+            {
+                // broken code that forgot to load the Address
+                //var person = context.Persons.First(p => p.Id == id);
+
+                // correct code that uses eager loading to get the address as well.
+                var person = context.Persons
+                    .Include(p => p.Address)
+                    .First(p => p.Id == id);
+                // navigation properties are always going to be null
+                // unless you tell EF to fill them in with .Include().
+
+                // print his name and address.
+                var address = person.Address; // <-- (before, using the broken code: this is null.. why)
+                
+                // with SQL and by extension, with EF...
+                // when you load an object, you only get its simple data, string, int, etc.
+                // you don't get it's object-to-object references (navigation properties) filled in. they remain null
+
+                // you have to tell EF to fill those references in. there's three ways,
+                // we'll focus on one, called eager loading.
+
+
+                var addressString = person.Address.City + ", " + person.Address.State;
+                Console.WriteLine($"Found person {person.Name}, in {addressString}.");
+            
+                // prompt to modify the name
+
+                // push those changes back to the DB.
+            }
+
+            // prompt for an ID and a name to add as a new person (call your method)
+
+            // prompt for the name of a person to delete. (call your method)
+        }
+
+        public static void DeletePersonByName(string name)
+        {
+            // implement this with a new context
+        }
+
+        public static void AddPerson(int id, string name)
+        {
+            // implement this with a new context
+        }
+
+        public static void Setup()
+        {
             // to connect to the database, you need an instance of your context class.
             // it's very much IDisposable
             using (var context = new PersonContext())
