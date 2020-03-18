@@ -1,0 +1,27 @@
+relational databases - we don't have objects, reference types, collections, methods, inheritance.
+
+tables - each one will have a different set of:
+    - columns. each column will be one piece of data about the type of thing this table contains.
+       e.g. a BirthDate column on a Person.
+       columns have data types (SQL Server ones, not the same as C#)
+    - rows. each one will represent one instance of the type of thing this table contains.
+
+- we need a way to identify a particular row uniquely
+    (so that we can reference it in other tables)
+  the database designer gets to pick exactly what kind of column will identify that row.
+  he chooses one column to be the "primary key." each row's value for that column
+  must be unique within that column. for example, the integer ID we've been using.
+  it's also possible to have two columns together being that primary key.
+    e.g. (City, State) this kind is called a "composite key"
+
+- we need a way to connect one row to another row to establish a relationship
+  between different types of data. that way is called a "foreign key" column.
+  if THIS row's data is connected to THAT row's data,
+    THIS row should have a copy of THAT row's primary key value.
+  in C#, the person just contains an address property/field.
+  in SQL... the person table will have a column which holds an address's ID.
+   that column is called a foreign key.
+
+referential integrity - this means that, every foreign key value should
+    reflect a valid, real primary key value in the other table.
+    SQl Server will throw an error before it'll let you break this.
