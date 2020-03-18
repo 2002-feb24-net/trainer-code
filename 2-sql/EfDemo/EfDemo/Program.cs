@@ -146,9 +146,14 @@ namespace EfDemo
             {
                 // quick and dirty way to create the database with all the tables, columns, etc.
                 //     which the context expects to see. but if the DB already exists, does nothing.
-                context.Database.EnsureCreated();
+                //context.Database.EnsureCreated();
                 // (watch out, if you change the structure of the objects your context uses,
                 //  then EF might fail at runtime. delete the db file to fix this with a new database.)
+
+                // instead of using EnsureCreated, the proper way to update the database's structure
+                // based on your C# code is migrations.
+                // a migration is a reversible set of changes to make to a database's structure.
+                // you then apply the migration to actually make the changes to the DB.
 
                 // if there are no persons, then add the initial data.
                 if (!context.Persons.Any())

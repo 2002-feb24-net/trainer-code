@@ -1,0 +1,13 @@
+for the next month:
+    you'll have a "Free Trial" subscription
+    you start with a $200 credit on your account
+    if that $200 runs out, you will be charged.
+for the 11 months after that:
+    at the transition, you'll need to opt in
+        to a "Pay-As-You-Go" subscription
+    anything left of the $200 vanishes
+    certain Azure services remain free
+after all 12 months are over:
+    most of those Azure services are no longer free.
+
+check the billing center in the azure portal to make sure you're not spending more than you want to.

@@ -19,9 +19,30 @@ namespace EfDemo
         // one clumsy hardcoded easy one is OnConfiguring
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
-            var connectionString = "Data Source=../../../persons.db";
+            // there's multiple kinds of SQL
+            // SQLite - lightweight, quick to set up, and can store the DB in one file
+            // SQL Server - Microsoft's preferred version of SQL
+            //       lowercase "SQL server" refers to any software that can provide access to SQL DB over internet
+            //       "SQL Server" (capital) is Microsoft's version of that software.
+
             // need another package for this (Microsoft.EntityFrameworkCore.Sqlite)
-            optionsBuilder.UseSqlite(connectionString);
+            //optionsBuilder.UseSqlite("Data Source=../../../person.db");
+
+            // need another package for this (Microsoft.EntityFrameworkCore.SqlServer)
+            optionsBuilder.UseSqlServer(SecretConfiguration.ConnectionString);
+            // ^ this line will have a compile error when you clone it... because my SecretConfiguration
+            // file is gitignored. you need to make your own if you want to run this code on your laptop,
+            // like this:
+
+            /*
+namespace EfDemo
+{
+    internal class SecretConfiguration
+    {
+        internal const string ConnectionString = "(connection string here)";
+    }
+}
+             */
         }
     }
 }
