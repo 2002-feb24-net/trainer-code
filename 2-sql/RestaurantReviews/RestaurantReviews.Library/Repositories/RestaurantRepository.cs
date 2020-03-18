@@ -8,6 +8,10 @@ namespace RestaurantReviews.Library.Repositories
     /// <summary>
     /// A repository managing data access for restaurant objects and their review members.
     /// </summary>
+    /// <remarks>
+    /// The repository design pattern has us keep data access code in a class of its own;
+    /// operations like create, read, update, and delete (CRUD operations)
+    /// </remarks>
     public class RestaurantRepository
     {
         private readonly ICollection<Restaurant> _data;

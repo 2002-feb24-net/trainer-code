@@ -4,6 +4,8 @@ using System.IO;
 using System.Linq;
 using System.Security;
 using System.Xml.Serialization;
+using Microsoft.EntityFrameworkCore;
+using RestaurantReviews.Library;
 using RestaurantReviews.Library.Models;
 using RestaurantReviews.Library.Repositories;
 
@@ -24,8 +26,8 @@ namespace RestaurantReviews.ConsoleApp
                 Console.WriteLine();
                 Console.WriteLine("r:\tDisplay or modify restaurants.");
                 Console.WriteLine("a:\tAdd new restaurant.");
-                Console.WriteLine("s:\tSave data to disk.");
-                Console.WriteLine("l:\tLoad data from disk.");
+                Console.WriteLine("s:\tSave data to database.");
+                Console.WriteLine("l:\tLoad data from database.");
                 Console.WriteLine();
                 Console.Write("Enter valid menu option, or \"q\" to quit: ");
                 var input = Console.ReadLine();
@@ -347,9 +349,19 @@ namespace RestaurantReviews.ConsoleApp
                     var restaurants = restaurantRepository.GetRestaurants().ToList();
                     try
                     {
-                        using (var stream = new FileStream("../../../data.xml", FileMode.Create))
+                        using (var context = new RestaurantContext())
                         {
-                            serializer.Serialize(stream, restaurants);
+                            context.Database.EnsureCreated();
+                            foreach (var review in context.Reviews)
+                            {
+                                context.Reviews.Remove(review);
+                            }
+                            foreach (var restaurant in context.Restaurants)
+                            {
+                                context.Restaurants.Remove(restaurant);
+                            }
+                            context.Restaurants.AddRange(restaurants);
+                            context.SaveChanges();
                         }
                         Console.WriteLine("Success.");
                     }
@@ -368,9 +380,9 @@ namespace RestaurantReviews.ConsoleApp
                     List<Restaurant> restaurants;
                     try
                     {
-                        using (var stream = new FileStream("../../../data.xml", FileMode.Open))
+                        using (var context = new RestaurantContext())
                         {
-                            restaurants = (List<Restaurant>)serializer.Deserialize(stream);
+                            restaurants = context.Restaurants.Include(r => r.Reviews).ToList();
                         }
                         Console.WriteLine("Success.");
                         foreach (var item in restaurantRepository.GetRestaurants())
