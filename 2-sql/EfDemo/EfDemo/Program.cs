@@ -85,20 +85,37 @@ namespace EfDemo
 
                 var addressString = person.Address.City + ", " + person.Address.State;
                 Console.WriteLine($"Found person {person.Name}, in {addressString}.");
-            
+
                 // prompt to modify the name
+                Console.Write("Enter a new name: ");
+                string input = Console.ReadLine();
+                person.Name = input; // because this entity is "tracked", by coming out of the DbSet...
+                                    // this change is picked up by SaveChanges.
 
                 // push those changes back to the DB.
+                context.SaveChanges();
             }
 
             // prompt for an ID and a name to add as a new person (call your method)
 
             // prompt for the name of a person to delete. (call your method)
+            Console.Write("Name of person to delete: ");
+            string name = Console.ReadLine();
+            DeletePersonByName(name);
         }
 
         public static void DeletePersonByName(string name)
         {
-            // implement this with a new context
+            using var context = new PersonContext();
+
+            // get him out of the DbSet
+            Person toBeDeleted = context.Persons.First(p => p.Name == name);
+
+            // tell the DbSet to remove him
+            context.Persons.Remove(toBeDeleted);
+
+            // save changes
+            context.SaveChanges();
         }
 
         public static void AddPerson(int id, string name)
