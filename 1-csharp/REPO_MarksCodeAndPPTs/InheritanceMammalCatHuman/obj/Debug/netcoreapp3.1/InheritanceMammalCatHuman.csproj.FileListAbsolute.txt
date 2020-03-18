@@ -1,0 +1,11 @@
+C:\revature\nicksbatchcoding\InheritanceMammalCatHuman\bin\Debug\netcoreapp3.1\InheritanceMammalCatHuman.exe
+C:\revature\nicksbatchcoding\InheritanceMammalCatHuman\bin\Debug\netcoreapp3.1\InheritanceMammalCatHuman.deps.json
+C:\revature\nicksbatchcoding\InheritanceMammalCatHuman\bin\Debug\netcoreapp3.1\InheritanceMammalCatHuman.runtimeconfig.json
+C:\revature\nicksbatchcoding\InheritanceMammalCatHuman\bin\Debug\netcoreapp3.1\InheritanceMammalCatHuman.runtimeconfig.dev.json
+C:\revature\nicksbatchcoding\InheritanceMammalCatHuman\bin\Debug\netcoreapp3.1\InheritanceMammalCatHuman.dll
+C:\revature\nicksbatchcoding\InheritanceMammalCatHuman\bin\Debug\netcoreapp3.1\InheritanceMammalCatHuman.pdb
+C:\revature\nicksbatchcoding\InheritanceMammalCatHuman\obj\Debug\netcoreapp3.1\InheritanceMammalCatHuman.csprojAssemblyReference.cache
+C:\revature\nicksbatchcoding\InheritanceMammalCatHuman\obj\Debug\netcoreapp3.1\InheritanceMammalCatHuman.AssemblyInfoInputs.cache
+C:\revature\nicksbatchcoding\InheritanceMammalCatHuman\obj\Debug\netcoreapp3.1\InheritanceMammalCatHuman.AssemblyInfo.cs
+C:\revature\nicksbatchcoding\InheritanceMammalCatHuman\obj\Debug\netcoreapp3.1\InheritanceMammalCatHuman.dll
+C:\revature\nicksbatchcoding\InheritanceMammalCatHuman\obj\Debug\netcoreapp3.1\InheritanceMammalCatHuman.pdb
