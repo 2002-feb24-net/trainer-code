@@ -68,7 +68,7 @@ namespace EfDemo
                 // correct code that uses eager loading to get the address as well.
                 var person = context.Persons
                     .Include(p => p.Address)
-                    .First(p => p.Id == id);
+                    .First();
                 // navigation properties are always going to be null
                 // unless you tell EF to fill them in with .Include().
 
@@ -128,7 +128,6 @@ namespace EfDemo
 
             var person = new Person
             {
-                Id = id,
                 Name = name
             };
 
@@ -145,7 +144,7 @@ namespace EfDemo
             {
                 // quick and dirty way to create the database with all the tables, columns, etc.
                 //     which the context expects to see. but if the DB already exists, does nothing.
-                context.Database.EnsureCreated();
+                //context.Database.EnsureCreated();
                 // (watch out, if you change the structure of the objects your context uses,
                 //  then EF might fail at runtime. delete the db file to fix this with a new database.)
 
@@ -154,11 +153,9 @@ namespace EfDemo
                 {
                     var person = new Person
                     {
-                        Id = 1,
                         Name = "Fred",
                         Address = new Address
                         {
-                            Id = 1,
                             Street = "123 Main St",
                             City = "Fort Worth",
                             State = "TX"

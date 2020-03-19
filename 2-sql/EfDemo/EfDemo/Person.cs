@@ -9,7 +9,7 @@ namespace EfDemo
   {
     // regular simple properties like these are always loaded by EF
 
-    [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
+    /*    [DatabaseGenerated(DatabaseGeneratedOption.None)]*/
     public int Id { get; set; }
     
     public string Name { get; set; }

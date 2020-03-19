@@ -7,7 +7,7 @@ namespace EfDemo
 {
   public class Address
   {
-    [DatabaseGenerated(DatabaseGeneratedOption.None)]
+    /*    [DatabaseGenerated(DatabaseGeneratedOption.None)]*/
     public int Id { get; set; }
     
     public string Street { get; set; }
