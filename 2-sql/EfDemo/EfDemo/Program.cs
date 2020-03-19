@@ -77,14 +77,13 @@ namespace EfDemo
                 
                 // with SQL and by extension, with EF...
                 // when you load an object, you only get its simple data, string, int, etc.
-                // you don't get it's object-to-object references (navigation properties) filled in. they remain null
+                // you don't get it's object-to-object references (navigation properties) filled in. They remain null
 
                 // you have to tell EF to fill those references in. there's three ways,
                 // we'll focus on one, called eager loading.
 
-
                 var addressString = person.Address.City + ", " + person.Address.State;
-                Console.WriteLine($"Found person {person.Name}, in {addressString}.");
+                Console.WriteLine($"Found THE person {person.Name}, in {addressString}.");
 
                 // prompt to modify the name
                 Console.Write("Enter a new name: ");
@@ -180,7 +179,7 @@ namespace EfDemo
 
                 Console.WriteLine(fred.Name);
 
-                fred.Name += "+";
+                fred.Name += " And I love her";
 
                 // the context "tracks" the ojbects you extract from it
                 // and any changes you make to those objects it will pick up on and apply with SaveChanges

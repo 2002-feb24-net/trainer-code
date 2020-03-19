@@ -21,7 +21,7 @@ namespace EfDemo
         {
             //var connectionString = "Data Source=../../../persons.db";
             // need another package for this (Microsoft.EntityFrameworkCore.Sqlite)
-            optionsBuilder.UseSqlite(config.ConnectionString);
+            optionsBuilder.UseSqlServer(SecretConfiguration.ConnectionString);
         }
     }
 }
