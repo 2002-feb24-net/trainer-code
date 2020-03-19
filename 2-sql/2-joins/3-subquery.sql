@@ -29,3 +29,39 @@ WHERE TrackId NOT IN (SELECT * FROM purchased_tracks);
 SELECT TrackId FROM Track
 EXCEPT
 SELECT TrackId FROM InvoiceLine;
+
+
+-----------------
+SELECT C.FirstName, C.LastName, C.CountryFROM Customer AS c, Employee AS eWHERE e.EmployeeId = c.SupportRepId AND(YEAR(e.HireDate) - YEAR(e.BirthDate)) < 35;
+
+------------------
+
+SELECT *
+FROM Artist
+WHERE ArtistId IN (
+	SELECT ArtistId
+	FROM Album
+	WHERE AlbumId IN (
+		SELECT AlbumId
+		FROM Track
+		WHERE GenreId NOT IN (
+			SELECT GenreId
+			FROM Genre
+			WHERE Name = 'Latin'
+		)
+	)
+)
+
+------------
+
+SELECT * FROM Track WHERE Milliseconds = (
+	SELECT MAX(t.Milliseconds)
+	FROM Track AS t
+		INNER JOIN MediaType AS mt ON mt.MediaTypeId = t.MediaTypeId
+	WHERE mt.Name LIKE '%video%');
+
+SELECT * FROM Track WHERE Milliseconds >= ALL (
+	SELECT t.Milliseconds
+	FROM Track AS t
+		INNER JOIN MediaType AS mt ON mt.MediaTypeId = t.MediaTypeId
+	WHERE mt.Name LIKE '%video%');
