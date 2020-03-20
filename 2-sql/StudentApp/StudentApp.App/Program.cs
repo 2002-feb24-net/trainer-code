@@ -1,4 +1,8 @@
 ﻿using System;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using StudentApp.Data.Model;
 
 namespace StudentApp.App
 {
@@ -35,9 +39,31 @@ namespace StudentApp.App
         //      - e.g.: if a type named "X" has a property named either "Id" or "XId",
         //            it will be assumed to be the primary key
 
+        public static readonly ILoggerFactory AppLoggerFactory = LoggerFactory.Create(builder =>
+        {
+            builder.AddConsole();
+        });
+
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            // sets up console logging for EF Core
+            // (and the connection stirng for SQL Server)
+            var contextOptions = new DbContextOptionsBuilder<StudentDbContext>()
+                .UseLoggerFactory(AppLoggerFactory)
+                .UseSqlServer(SecretConfiguration.ConnectionString)
+                .Options;
+
+            using (var context = new StudentDbContext(contextOptions))
+            {
+                Console.WriteLine("One of the students in CS 100:");
+
+                Class cs100 = context.Class
+                    .Include(c => c.Enrollment) // eager loading of a many-to-many relationship
+                        .ThenInclude(e => e.Student)
+                    .First(c => c.CourseNumber == "CS 100");
+
+                Console.WriteLine(cs100.Enrollment.First().Student.Name);
+            }
         }
     }
 }
