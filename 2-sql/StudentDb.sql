@@ -41,3 +41,7 @@ INSERT INTO Class (CourseNumber) VALUES
 
 INSERT INTO Enrollment (StudentId, ClassId) VALUES
 	(1, 1), (1, 2), (3, 3), (3, 1), (3, 2);
+
+--INSERT INTO Enrollment (StudentId, ClassId) VALUES
+--	((SELECT Id FROM Student WHERE Name = 'Anthony'),
+--		(SELECT Id FROM Class WHERE CourseNumber = 'CS 101'));
