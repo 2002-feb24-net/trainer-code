@@ -16,9 +16,10 @@ namespace RestaurantReviews.ConsoleUI
 
         public static void Main()
         {
-            XmlSerializer serializer = Dependencies.CreateXmlSerializer();
+            var dependencies = new Dependencies();
+            XmlSerializer serializer = dependencies.CreateXmlSerializer();
 
-            using IRestaurantRepository restaurantRepository = Dependencies.
+            using IRestaurantRepository restaurantRepository = dependencies.
                 CreateRestaurantRepository();
             RunUi(restaurantRepository, serializer);
         }

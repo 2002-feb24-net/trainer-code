@@ -9,7 +9,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantReviews.Library",
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantReviews.Tests", "RestaurantReviews.Tests\RestaurantReviews.Tests.csproj", "{0480B064-14E4-492E-A789-8BBE4AF4BC6A}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RestaurantReviews.DataAccess", "RestaurantReviews.DataAccess\RestaurantReviews.DataAccess.csproj", "{E45DE112-6595-45C4-AE8F-4F91CD11FB2E}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestaurantReviews.DataAccess", "RestaurantReviews.DataAccess\RestaurantReviews.DataAccess.csproj", "{618620A8-136F-4CA2-BF03-3031A88E2060}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,10 +29,10 @@ Global
 		{0480B064-14E4-492E-A789-8BBE4AF4BC6A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0480B064-14E4-492E-A789-8BBE4AF4BC6A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0480B064-14E4-492E-A789-8BBE4AF4BC6A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E45DE112-6595-45C4-AE8F-4F91CD11FB2E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E45DE112-6595-45C4-AE8F-4F91CD11FB2E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E45DE112-6595-45C4-AE8F-4F91CD11FB2E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E45DE112-6595-45C4-AE8F-4F91CD11FB2E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{618620A8-136F-4CA2-BF03-3031A88E2060}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{618620A8-136F-4CA2-BF03-3031A88E2060}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{618620A8-136F-4CA2-BF03-3031A88E2060}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{618620A8-136F-4CA2-BF03-3031A88E2060}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
