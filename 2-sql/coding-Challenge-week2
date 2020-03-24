@@ -1,0 +1,56 @@
+create schema c;
+
+create table c.products (id int not null primary key identity,
+						name nvarchar(20) unique, 
+						price smallmoney);
+						
+create table c.customers (id int not null primary key identifier,
+						firstname nvarchar(20),
+						lastname nvarchar(20),
+						cardnumber varchar(19))
+
+create table c.orders (id int not null primary key identity,
+						ProductID int Foreign Key(productID) references c.product(id)
+						customerID int Foreign Key(customerID) references c.customer(id));
+						
+
+
+
+insert into c.products values ('Motorola 4G', 300.25 );
+insert into c.products values ('Android I7', 400 );						
+insert into c.products values ('EPhone 876', 260 );
+
+insert into c.customers values ('Bob','Dole', '5550-2344-244653');
+insert into c.customers values ('Jim', 'Morrison', '3345-7543-23475');
+insert into c.customers values ('Nichelle', 'Edwards', '1645-3542-21431');
+
+insert into c.orders values (2,3);
+insert into c.orders values (1,2);
+insert into c.orders values (3,1);
+
+insert into c.products('Iphone', 200);
+insert into c.customer('Tina', 'Smith', '2250-7364-234653');
+
+select c.customers.firstname, c.customers.lastname
+where c.customers.firstname = 'Tina' and c.customers.lastname = 'smith'
+from c.customers, c.orders
+innerjoin c.customers on c.customers.id = c.orders.customerID;
+
+SELECT Orders.OrderID, Customers.CustomerName
+FROM Orders
+INNER JOIN Customers ON Orders.CustomerID = Customers.CustomerID; 
+
+select count(orders)
+from c.orders
+
+SELECT COUNT(price)
+from c.products
+where c.product.name = 'Iphone'
+from c.products, c.orders
+innerjoin c.products on c.product.id = c.order.productID;  
+
+update c.products
+set price = 250
+where name = 'Iphone';
+						
+
