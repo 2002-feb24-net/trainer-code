@@ -143,7 +143,9 @@ namespace EfDemo
             // to connect to the database, you need an instance of your context class.
             // it's very much IDisposable
             using (var context = new PersonContext())
-            {
+      {
+
+      
                 // quick and dirty way to create the database with all the tables, columns, etc.
                 //     which the context expects to see. but if the DB already exists, does nothing.
                 //context.Database.EnsureCreated();
