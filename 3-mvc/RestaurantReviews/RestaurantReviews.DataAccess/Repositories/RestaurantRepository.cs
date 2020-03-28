@@ -37,7 +37,7 @@ namespace RestaurantReviews.DataAccess.Repositories
         /// including associated reviews.
         /// </summary>
         /// <returns>The collection of restaurants</returns>
-        public IEnumerable<Domain.Models.Restaurant> GetRestaurants(string search = null)
+        public IEnumerable<Domain.Model.Restaurant> GetRestaurants(string search = null)
         {
             // disable unnecessary tracking for performance benefit
             IQueryable<Restaurant> items = _dbContext.Restaurant
@@ -53,14 +53,14 @@ namespace RestaurantReviews.DataAccess.Repositories
         /// Get a restaurant by ID.
         /// </summary>
         /// <returns>The restaurant</returns>
-        public Domain.Models.Restaurant GetRestaurantById(int id) =>
+        public Domain.Model.Restaurant GetRestaurantById(int id) =>
             Mapper.MapRestaurantWithReviews(_dbContext.Restaurant.Find(id));
 
         /// <summary>
         /// Add a restaurant, including any associated reviews.
         /// </summary>
         /// <param name="restaurant">The restaurant</param>
-        public void AddRestaurant(Domain.Models.Restaurant restaurant)
+        public void AddRestaurant(Domain.Model.Restaurant restaurant)
         {
             if (restaurant.Id != 0)
             {
@@ -89,7 +89,7 @@ namespace RestaurantReviews.DataAccess.Repositories
         /// Update a restaurant as well as its reviews.
         /// </summary>
         /// <param name="restaurant">The restaurant with changed values</param>
-        public void UpdateRestaurant(Domain.Models.Restaurant restaurant)
+        public void UpdateRestaurant(Domain.Model.Restaurant restaurant)
         {
             _logger.LogInformation("Updating restaurant with ID {restaurantId}", restaurant.Id);
 
@@ -105,7 +105,7 @@ namespace RestaurantReviews.DataAccess.Repositories
         /// Get a review.
         /// </summary>
         /// <param name="reviewId">The ID of the review</param>
-        public Domain.Models.Review GetReviewById(int reviewId)
+        public Domain.Model.Review GetReviewById(int reviewId)
         {
             Review review = _dbContext.Review.AsNoTracking()
                 .First(r => r.Id == reviewId);
@@ -117,7 +117,7 @@ namespace RestaurantReviews.DataAccess.Repositories
         /// </summary>
         /// <param name="review">The review</param>
         /// <param name="restaurant">The restaurant</param>
-        public void AddReview(Domain.Models.Review review, Domain.Models.Restaurant restaurant = null)
+        public void AddReview(Domain.Model.Review review, Domain.Model.Restaurant restaurant = null)
         {
             if (restaurant.Id != 0)
             {
@@ -161,7 +161,7 @@ namespace RestaurantReviews.DataAccess.Repositories
         /// Update a review.
         /// </summary>
         /// <param name="review">The review with changed values</param>
-        public void UpdateReview(Domain.Models.Review review)
+        public void UpdateReview(Domain.Model.Review review)
         {
             _logger.LogInformation("Updating review with ID {reviewId}", review.Id);
 

@@ -11,9 +11,9 @@ namespace RestaurantReviews.DataAccess
         /// </summary>
         /// <param name="restaurant">The restaurant DAO.</param>
         /// <returns>The restaurant business model.</returns>
-        public static Domain.Models.Restaurant MapRestaurantWithReviews(Model.Restaurant restaurant)
+        public static Domain.Model.Restaurant MapRestaurantWithReviews(Model.Restaurant restaurant)
         {
-            return new Domain.Models.Restaurant
+            return new Domain.Model.Restaurant
             {
                 Id = restaurant.Id,
                 Name = restaurant.Name,
@@ -27,7 +27,7 @@ namespace RestaurantReviews.DataAccess
         /// </summary>
         /// <param name="restaurant">The restaurant business model.</param>
         /// <returns>The restaurant DAO.</returns>
-        public static Model.Restaurant MapRestaurantWithReviews(Domain.Models.Restaurant restaurant)
+        public static Model.Restaurant MapRestaurantWithReviews(Domain.Model.Restaurant restaurant)
         {
             return new Model.Restaurant
             {
@@ -43,9 +43,9 @@ namespace RestaurantReviews.DataAccess
         /// </summary>
         /// <param name="restaurant">The review DAO.</param>
         /// <returns>The review business model.</returns>
-        public static Domain.Models.Review Map(Model.Review review)
+        public static Domain.Model.Review Map(Model.Review review)
         {
-            return new Domain.Models.Review
+            return new Domain.Model.Review
             {
                 Id = review.Id,
                 ReviewerName = review.ReviewerName,
@@ -60,7 +60,7 @@ namespace RestaurantReviews.DataAccess
         /// </summary>
         /// <param name="review">The review business model.</param>
         /// <returns>The review DAO.</returns>
-        public static Model.Review Map(Domain.Models.Review review)
+        public static Model.Review Map(Domain.Model.Review review)
         {
             return new Model.Review
             {

@@ -2,7 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using RestaurantReviews.Domain.Interfaces;
-using RestaurantReviews.Domain.Models;
+using RestaurantReviews.Domain.Model;
 using RestaurantReviews.WebUI.ViewModels;
 using System;
 using System.Collections.Generic;
@@ -59,7 +59,10 @@ namespace RestaurantReviews.WebUI.Controllers
         }
 
         // GET: Restaurant/Create
-        public ActionResult Create() => View();
+        public ActionResult Create()
+        {
+            return View();
+        }
 
         // POST: Restaurant/Create
         [HttpPost]

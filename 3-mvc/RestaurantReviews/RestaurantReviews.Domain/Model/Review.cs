@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace RestaurantReviews.Domain.Models
+namespace RestaurantReviews.Domain.Model
 {
     /// <summary>
     /// A review of a restaurant, having a reviewer name, a score, and some text.

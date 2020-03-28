@@ -1,4 +1,4 @@
-﻿using RestaurantReviews.Domain.Models;
+﻿using RestaurantReviews.Domain.Model;
 using System;
 using System.Collections.Generic;
 using System.Text;

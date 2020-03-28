@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using RestaurantReviews.Domain.Models;
+using RestaurantReviews.Domain.Model;
 
 namespace RestaurantReviews.Domain.Interfaces
 {

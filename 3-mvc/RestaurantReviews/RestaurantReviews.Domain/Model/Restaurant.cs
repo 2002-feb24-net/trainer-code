@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 
-namespace RestaurantReviews.Domain.Models
+namespace RestaurantReviews.Domain.Model
 {
     /// <summary>
     /// A restaurant object, having a name, a collection of its reviews,

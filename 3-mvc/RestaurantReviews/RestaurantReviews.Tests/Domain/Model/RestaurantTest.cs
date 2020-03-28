@@ -1,9 +1,9 @@
-﻿using RestaurantReviews.Domain.Models;
+﻿using RestaurantReviews.Domain.Model;
 using System;
 using System.Linq;
 using Xunit;
 
-namespace RestaurantReviews.Tests.Domain.Models
+namespace RestaurantReviews.Tests.Domain.Model
 {
     public class RestaurantTest
     {

@@ -6,7 +6,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using RestaurantReviews.Domain.Interfaces;
-using RestaurantReviews.Domain.Models;
+using RestaurantReviews.Domain.Model;
 using RestaurantReviews.WebUI.ViewModels;
 
 namespace RestaurantReviews.WebUI.Controllers
