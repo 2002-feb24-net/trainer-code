@@ -1,0 +1,62 @@
+﻿@model IEnumerable<RestaurantViewModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<!-- uses GET method instead of POST -->
+<!-- POST forms send the data in the request body. -->
+<!-- GET forms send the data in the URL itself, as a query string -->
+<!--                            query string -->
+<!--                       |---------------------| -->
+<!-- http://www.example.com?key=value&key2=value2 -->
+<div>
+    <form asp-action="Index" method="GET" class="form-inline">
+        <label class="sr-only" for="search">Search:</label>
+        <input type="search" class="form-control mb-2 mr-sm-2 mb-sm-0" id="search" name="search" placeholder="Search" />
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Reviews)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Score)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @item.Reviews.Count()
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Score)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

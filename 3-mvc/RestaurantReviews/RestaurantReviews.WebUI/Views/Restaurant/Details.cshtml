@@ -1,0 +1,89 @@
+﻿@model RestaurantViewModel
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Restaurant</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Score)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Score)
+        </dd>
+    </dl>
+</div>
+
+<div>
+    <p>
+        <a asp-controller="Review" asp-action="Create"
+           asp-all-route-data="@(new Dictionary<string, string> { { "restaurantId", Model.Id.ToString() } })">
+            Add New Review
+        </a>
+    </p>
+
+    @if (Model.Reviews.Any())
+    {
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        @* this and other lambdas for razor are never "actually executed" *@
+                        @* they are just looked at by the rendering engine *@
+                        @Html.DisplayNameFor(model => model.Reviews.First().ReviewerName)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Reviews.First().Score)
+                    </th>
+                    <th>
+                        @Html.DisplayNameFor(model => model.Reviews.First().Text)
+                    </th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.Reviews)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.ReviewerName)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Score)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Text)
+                        </td>
+                        <td>
+                            @Html.ActionLink("Details", "Details", "Review", new { id = item.Id }) |
+                            @Html.ActionLink("Delete", "Delete", "Review", new { id = item.Id })
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+
+    <div>
+        @Html.ActionLink("Edit", "Edit", new { id = Model.Id }) |
+        @Html.ActionLink("Delete", "Delete", new { id = Model.Id }) |
+        <a asp-action="Index">Back to List</a>
+    </div>
+</div>
