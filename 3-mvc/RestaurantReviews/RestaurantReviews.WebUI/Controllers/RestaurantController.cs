@@ -86,7 +86,7 @@ namespace RestaurantReviews.WebUI.Controllers
             }
             catch
             {
-                return View();
+                return View(viewModel);
             }
         }
 

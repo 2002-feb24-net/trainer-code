@@ -50,11 +50,17 @@ namespace RestaurantReviews.DataAccess.Repositories
         }
 
         /// <summary>
-        /// Get a restaurant by ID.
+        /// Get a restaurant by ID, including any associated reviews.
         /// </summary>
         /// <returns>The restaurant</returns>
-        public Domain.Model.Restaurant GetRestaurantById(int id) =>
-            Mapper.MapRestaurantWithReviews(_dbContext.Restaurant.Find(id));
+        public Domain.Model.Restaurant GetRestaurantById(int id)
+        {
+            Restaurant restaurant = _dbContext.Restaurant
+                .Include(r => r.Review)
+                .FirstOrDefault(r => r.Id == id);
+
+            return Mapper.MapRestaurantWithReviews(restaurant);
+        }
 
         /// <summary>
         /// Add a restaurant, including any associated reviews.

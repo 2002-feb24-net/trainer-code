@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 
 namespace RestaurantReviews.DataAccess.Model
 {
@@ -18,14 +20,8 @@ namespace RestaurantReviews.DataAccess.Model
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
-
             modelBuilder.Entity<Restaurant>(entity =>
             {
-                entity.ToTable("Restaurant", "RR");
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
                 entity.Property(e => e.Name)
                     .IsRequired()
                     .HasMaxLength(128);
@@ -33,11 +29,7 @@ namespace RestaurantReviews.DataAccess.Model
 
             modelBuilder.Entity<Review>(entity =>
             {
-                entity.ToTable("Review", "RR");
-
-                entity.Property(e => e.Id).HasColumnName("ID");
-
-                entity.Property(e => e.RestaurantId).HasColumnName("RestaurantID");
+                entity.HasIndex(e => e.RestaurantId);
 
                 entity.Property(e => e.ReviewerName)
                     .IsRequired()
@@ -49,9 +41,12 @@ namespace RestaurantReviews.DataAccess.Model
 
                 entity.HasOne(d => d.Restaurant)
                     .WithMany(p => p.Review)
-                    .HasForeignKey(d => d.RestaurantId)
-                    .HasConstraintName("FK_Review_Restaurant");
+                    .HasForeignKey(d => d.RestaurantId);
             });
+
+            OnModelCreatingPartial(modelBuilder);
         }
+
+        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

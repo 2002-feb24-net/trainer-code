@@ -1,4 +1,7 @@
-﻿namespace RestaurantReviews.DataAccess.Model
+﻿using System;
+using System.Collections.Generic;
+
+namespace RestaurantReviews.DataAccess.Model
 {
     public partial class Review
     {
