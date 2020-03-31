@@ -1,0 +1,117 @@
+<!-- every HTML 5 document needs to begin with the proper HTML 5 document type declaration -->
+<!-- (not technically an element) -->
+<!DOCTYPE html>
+
+<!-- the "root element" or "document element" - the one containing all others -->
+<!-- is the HTML element. -->
+<html lang="en">
+<!-- the head element contains metadata about the page -->
+
+<head>
+    <meta charset="UTF-8"> <!-- interpret this page as UTF-8 (Unicode character set) -->
+    <!-- this one has to do with mobile initial zoom stuff -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- this switches off Microsoft Edge's old-IE-compatibility behaviors -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="author" content="Nick Escalona">
+
+    <!-- these two used to be very important for search engine results -->
+    <meta name="description" content="description of this page">
+    <meta name="keywords" content="search engine keywords for this page">
+    <!-- SEO (search engine optimization) these days is more about getting
+    other people to link to you in the right contexts -->
+
+    <title>Document</title> <!-- tab/window/bookmark title -->
+</head>
+<!-- the body element contains the actual page -->
+
+<body>
+	picture below <br>
+<img src='revature.png' width="500px" alt="My Revature image"><br>
+picture above<br>
+<br><br>
+<b>Bold text </b><br>
+<strong>Important text </strong><br>
+<i>italic text</i><br>
+<em> Emphasized text </em><br> 
+<mark>Marked text </mark><br>
+<small>Small text</small><br>
+<del>Deleted text </del><br>
+<ins>Inserted text </ins><br>
+<sub>Subscript text</sub><br>
+<sup>Superscript text</sup><br>
+<br>
+<br>
+    <table>
+        <thead>
+            <!-- table header section/row -->
+            <th>City</th> <!-- table header cell -->
+            <th>State</th>
+        </thead>
+        <tbody>
+            <!-- table body -->
+            <tr>
+                <!-- table row -->
+                <td>Seattle</td> <!-- table data cell -->
+                <td>WA</td>
+            </tr>
+            <tr>
+                <td>Arlington</td>
+                <td>TX</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- html gives us ways to represent special characters -->
+    <!-- the charset is UTF-8, so we can put almost any character we want: -->
+    ᠡ‍ᠯᠤᠭ᠎ᠠ
+    <!-- OK, but at least whitespace characters, we should find another way -->
+    <!-- also, some characters we can't really put on the page.. -->
+    &lt;p&gt; (also we need it for &amp;)
+    <!-- HTML has "character reference" sometimes called "HTML codes" -->
+    &nbsp;
+    <!-- non-breaking space (the browser will not wrap the line on that space) -->
+    &copy;
+    <!-- but we do have numerical character reference -->
+    &#1234;
+    <!-- decimal (base-10) Unicode codepoint reference -->
+    &#x4d2;
+    <!-- hex (base-16) Unicode codepoint reference -->
+<br><br><br>
+
+        <label>
+            Checkbox:
+            <input type="checkbox" name="checkbox1">
+        </label><br>
+
+        <label for="box2">Checkbox:</label>
+        <input type="checkbox" id="box2" name="checkbox2"><br>
+
+        <input type="color" name="color"><br>
+        <input type="date"><br>
+        <input type="datetime-local"><br>
+        <input type="email"><br>
+        <input type="password"><br>
+        <input type="file"><br>
+        <input type="hidden" name="hiddenthing" value="data">
+
+	<select name="whichvalue">
+            <option value="value1"> value one</option>
+            <option value="value2" selected> value two</option>
+        </select>
+
+        <input type="submit">
+    </form>
+
+    <!-- form for google search -->
+    <form method="GET" action="https://google.com/search">
+        <!-- <label> -->
+            <!-- Search: -->
+            <input type="text" name="q" placeholder="Search">
+        <!-- </label> -->
+        <input type="submit">
+
+
+</body>
+
+</html>
