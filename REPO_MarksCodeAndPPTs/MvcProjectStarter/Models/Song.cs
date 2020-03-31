@@ -18,7 +18,7 @@ namespace MvcProjectStarter.Models
         [Required]
         public string genre { get; set; }
         
-        [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$", ErrorMessage = "Characters are not allowed.")]
+        [RegularExpression(@"^[A-Z]+[a-zA-Z0-9""'\s-]*$", ErrorMessage = "Special characters are not allowed.")]
         public string artist { get; set; }
         
         public string album { get; set; }
