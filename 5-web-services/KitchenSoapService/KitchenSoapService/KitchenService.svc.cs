@@ -24,6 +24,13 @@ namespace KitchenSoapService
             return FoodInFridge;
         }
 
+        public void PutInFridge(FridgeItem item)
+        {
+            item.Id = FoodInFridge.Max(i => i.Id) + 1;
+
+            FoodInFridge.Add(item);
+        }
+
         public bool CleanFridge()
         {
             var removed = FoodInFridge.RemoveAll(i => i.Expiration < DateTime.Now);

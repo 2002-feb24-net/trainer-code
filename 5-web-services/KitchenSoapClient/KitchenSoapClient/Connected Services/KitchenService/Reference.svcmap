@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ReferenceGroup xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" ID="899a5ea1-90f7-42e4-b171-51d16de4d247" xmlns="urn:schemas-microsoft-com:xml-wcfservicemap">
+  <ClientOptions>
+    <GenerateAsynchronousMethods>false</GenerateAsynchronousMethods>
+    <GenerateTaskBasedAsynchronousMethod>true</GenerateTaskBasedAsynchronousMethod>
+    <EnableDataBinding>true</EnableDataBinding>
+    <ExcludedTypes />
+    <ImportXmlTypes>false</ImportXmlTypes>
+    <GenerateInternalTypes>false</GenerateInternalTypes>
+    <GenerateMessageContracts>false</GenerateMessageContracts>
+    <NamespaceMappings />
+    <CollectionMappings />
+    <GenerateSerializableTypes>true</GenerateSerializableTypes>
+    <Serializer>Auto</Serializer>
+    <UseSerializerForFaults>true</UseSerializerForFaults>
+    <ReferenceAllAssemblies>true</ReferenceAllAssemblies>
+    <ReferencedAssemblies />
+    <ReferencedDataContractTypes />
+    <ServiceContractMappings />
+  </ClientOptions>
+  <MetadataSources>
+    <MetadataSource Address="http://localhost:59524/KitchenService.svc" Protocol="http" SourceId="1" />
+  </MetadataSources>
+  <Metadata>
+    <MetadataFile FileName="KitchenService.xsd" MetadataType="Schema" ID="7b856287-8742-4491-b5aa-c53d9fc34410" SourceId="1" SourceUrl="http://localhost:59524/KitchenService.svc?xsd=xsd4" />
+    <MetadataFile FileName="KitchenService1.xsd" MetadataType="Schema" ID="a539e643-8a9d-4b20-9742-d6a0cc23f6d8" SourceId="1" SourceUrl="http://localhost:59524/KitchenService.svc?xsd=xsd3" />
+    <MetadataFile FileName="KitchenService.disco" MetadataType="Disco" ID="cd0cff80-9d18-43a5-a421-3cb74bf1bb95" SourceId="1" SourceUrl="http://localhost:59524/KitchenService.svc?disco" />
+    <MetadataFile FileName="KitchenService2.xsd" MetadataType="Schema" ID="d36e1d6b-37b0-43a9-b17f-bb2758cb2f6d" SourceId="1" SourceUrl="http://localhost:59524/KitchenService.svc?xsd=xsd1" />
+    <MetadataFile FileName="KitchenService3.xsd" MetadataType="Schema" ID="7d895f30-9545-4563-8256-14935b7d73a9" SourceId="1" SourceUrl="http://localhost:59524/KitchenService.svc?xsd=xsd0" />
+    <MetadataFile FileName="KitchenService4.xsd" MetadataType="Schema" ID="e6c96704-fb33-42d9-9d2f-235254983554" SourceId="1" SourceUrl="http://localhost:59524/KitchenService.svc?xsd=xsd2" />
+    <MetadataFile FileName="KitchenService.wsdl" MetadataType="Wsdl" ID="e0ae0d65-1de2-46a6-b23e-ee7dc78c8ffd" SourceId="1" SourceUrl="http://localhost:59524/KitchenService.svc?wsdl" />
+  </Metadata>
+  <Extensions>
+    <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />
+    <ExtensionFile FileName="configuration.svcinfo" Name="configuration.svcinfo" />
+  </Extensions>
+</ReferenceGroup>

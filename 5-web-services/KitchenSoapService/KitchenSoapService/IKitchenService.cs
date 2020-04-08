@@ -28,5 +28,8 @@ namespace KitchenSoapService
         [OperationContract]
         [FaultContract(typeof(FaultException))]
         FridgeItem TakeOutLeftovers();
+
+        [OperationContract]
+        void PutInFridge(FridgeItem item);
     }
 }

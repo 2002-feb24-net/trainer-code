@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="KitchenService" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <xsd:schema targetNamespace="http://tempuri.org/Imports">
+      <xsd:import schemaLocation="http://localhost:59524/KitchenService.svc?xsd=xsd0" namespace="http://tempuri.org/" />
+      <xsd:import schemaLocation="http://localhost:59524/KitchenService.svc?xsd=xsd1" namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import schemaLocation="http://localhost:59524/KitchenService.svc?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/KitchenSoapService" />
+      <xsd:import schemaLocation="http://localhost:59524/KitchenService.svc?xsd=xsd3" namespace="http://schemas.datacontract.org/2004/07/System.ServiceModel" />
+      <xsd:import schemaLocation="http://localhost:59524/KitchenService.svc?xsd=xsd4" namespace="http://schemas.datacontract.org/2004/07/System" />
+    </xsd:schema>
+  </wsdl:types>
+  <wsdl:message name="IKitchenService_LookInsideFridge_InputMessage">
+    <wsdl:part name="parameters" element="tns:LookInsideFridge" />
+  </wsdl:message>
+  <wsdl:message name="IKitchenService_LookInsideFridge_OutputMessage">
+    <wsdl:part name="parameters" element="tns:LookInsideFridgeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKitchenService_CleanFridge_InputMessage">
+    <wsdl:part name="parameters" element="tns:CleanFridge" />
+  </wsdl:message>
+  <wsdl:message name="IKitchenService_CleanFridge_OutputMessage">
+    <wsdl:part name="parameters" element="tns:CleanFridgeResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKitchenService_TakeOutLeftovers_InputMessage">
+    <wsdl:part name="parameters" element="tns:TakeOutLeftovers" />
+  </wsdl:message>
+  <wsdl:message name="IKitchenService_TakeOutLeftovers_OutputMessage">
+    <wsdl:part name="parameters" element="tns:TakeOutLeftoversResponse" />
+  </wsdl:message>
+  <wsdl:message name="IKitchenService_TakeOutLeftovers_FaultExceptionFault_FaultMessage">
+    <wsdl:part xmlns:q1="http://schemas.datacontract.org/2004/07/System.ServiceModel" name="detail" element="q1:FaultException" />
+  </wsdl:message>
+  <wsdl:message name="IKitchenService_PutInFridge_InputMessage">
+    <wsdl:part name="parameters" element="tns:PutInFridge" />
+  </wsdl:message>
+  <wsdl:message name="IKitchenService_PutInFridge_OutputMessage">
+    <wsdl:part name="parameters" element="tns:PutInFridgeResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IKitchenService">
+    <wsdl:operation name="LookInsideFridge">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKitchenService/LookInsideFridge" message="tns:IKitchenService_LookInsideFridge_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKitchenService/LookInsideFridgeResponse" message="tns:IKitchenService_LookInsideFridge_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="CleanFridge">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKitchenService/CleanFridge" message="tns:IKitchenService_CleanFridge_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKitchenService/CleanFridgeResponse" message="tns:IKitchenService_CleanFridge_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="TakeOutLeftovers">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKitchenService/TakeOutLeftovers" message="tns:IKitchenService_TakeOutLeftovers_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKitchenService/TakeOutLeftoversResponse" message="tns:IKitchenService_TakeOutLeftovers_OutputMessage" />
+      <wsdl:fault wsaw:Action="http://tempuri.org/IKitchenService/TakeOutLeftoversFaultExceptionFault" name="FaultExceptionFault" message="tns:IKitchenService_TakeOutLeftovers_FaultExceptionFault_FaultMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="PutInFridge">
+      <wsdl:input wsaw:Action="http://tempuri.org/IKitchenService/PutInFridge" message="tns:IKitchenService_PutInFridge_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IKitchenService/PutInFridgeResponse" message="tns:IKitchenService_PutInFridge_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IKitchenService" type="tns:IKitchenService">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="LookInsideFridge">
+      <soap:operation soapAction="http://tempuri.org/IKitchenService/LookInsideFridge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CleanFridge">
+      <soap:operation soapAction="http://tempuri.org/IKitchenService/CleanFridge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="TakeOutLeftovers">
+      <soap:operation soapAction="http://tempuri.org/IKitchenService/TakeOutLeftovers" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+      <wsdl:fault name="FaultExceptionFault">
+        <soap:fault use="literal" name="FaultExceptionFault" namespace="" />
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="PutInFridge">
+      <soap:operation soapAction="http://tempuri.org/IKitchenService/PutInFridge" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="KitchenService">
+    <wsdl:port name="BasicHttpBinding_IKitchenService" binding="tns:BasicHttpBinding_IKitchenService">
+      <soap:address location="http://localhost:59524/KitchenService.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
