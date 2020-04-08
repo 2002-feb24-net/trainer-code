@@ -23,7 +23,7 @@ namespace NotesService.Api.Controllers
             _noteRepository = noteRepository;
         }
 
-        // GET: api/Notes
+        // GET: api/notes
         [HttpGet]
         public IActionResult Get()
         {
