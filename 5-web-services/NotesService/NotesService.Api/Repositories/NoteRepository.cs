@@ -34,6 +34,7 @@ namespace NotesService.Api.Repositories
                     Author = _users.First(u => u.Name == "Nick"),
                     IsPublic = true,
                     Text = "REST stands for representational state transfer",
+                    DateModified = new DateTime(2020, 4, 1),
                     Tags = new List<Tag>
                     {
                         _tags.First(t => t.Name == "services"),
@@ -45,17 +46,28 @@ namespace NotesService.Api.Repositories
                     Author = _users.First(u => u.Name == "Harold"),
                     IsPublic = false,
                     Text = "C# is an OOP language",
+                    DateModified = new DateTime(2020, 4, 9),
                     Tags = new List<Tag>
                     {
                         _tags.First(t => t.Name == "basic")
                     }
                 }
             };
+
+            _users[0].Notes = new List<Note> { _notes[1] };
+            _users[1].Notes = new List<Note> { _notes[0] };
         }
 
-        public IEnumerable<Note> GetAll()
+        public IEnumerable<Note> GetAll(DateTime? since)
         {
-            return _notes.ToList();
+            IEnumerable<Note> result = _notes;
+            if (since != null)
+            {
+                result = result.Where(n => n.DateModified >= since);
+            }
+            return result
+                .OrderByDescending(n => n.DateModified)
+                .ToList();
         }
 
         public Note GetById(int id)
@@ -72,6 +84,20 @@ namespace NotesService.Api.Repositories
         public void Remove(Note note)
         {
             _notes.Remove(note);
+        }
+
+        public IEnumerable<Note> GetAllByUser(int userId)
+        {
+            if (!_users.Any(u => u.Id == userId))
+            {
+                throw new InvalidOperationException($"User with ID {userId} does not exist.");
+            }
+
+            IEnumerable<Note> result = _notes;
+            result = result.Where(n => n.Author.Id == userId);
+            return result
+                .OrderByDescending(n => n.DateModified)
+                .ToList();
         }
     }
 }

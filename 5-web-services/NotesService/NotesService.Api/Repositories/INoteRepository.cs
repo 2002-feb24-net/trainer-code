@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NotesService.Api.Models;
 
 namespace NotesService.Api.Repositories
@@ -7,7 +8,9 @@ namespace NotesService.Api.Repositories
     {
         void Add(Note note);
 
-        IEnumerable<Note> GetAll();
+        IEnumerable<Note> GetAll(DateTime? since);
+
+        IEnumerable<Note> GetAllByUser(int userId);
 
         Note GetById(int id);
 

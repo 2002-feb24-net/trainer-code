@@ -25,9 +25,9 @@ namespace NotesService.Api.Controllers
 
         // GET: api/notes
         [HttpGet]
-        public IActionResult Get()
+        public IActionResult Get([FromQuery] DateTime? since = null)
         {
-            IEnumerable<Note> notes = _noteRepository.GetAll();
+            IEnumerable<Note> notes = _noteRepository.GetAll(since);
             return Ok(notes);
             // (200 OK response, with the notes serialized in the response body -- instead of some view's HTML)
         }
