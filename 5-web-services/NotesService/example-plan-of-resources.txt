@@ -1,0 +1,31 @@
+/api/notes
+    GET: get all notes
+    POST: create a new note
+
+    /api/notes/{noteId}
+        GET: get this note
+        PUT: update this note
+        DELETE: delete this note
+
+    /api/notes?since=2020-04-09
+        GET: notes since a certain date
+
+    /api/notes?count=3
+        GET: most recent N notes
+
+/api/tags
+    GET: get all tags
+
+    /api/tags/{tag}/notes
+        GET: all notes with given tag
+
+/api/users
+    GET: get all users
+
+    /api/users/{userId}
+        GET: get this user
+        DELETE: delete this user and all his notes
+
+        /api/users/{userId}/notes
+            GET: get this user's notes
+            POST: create a new note for this user
