@@ -12,6 +12,8 @@ namespace NotesService.Api.Repositories
 
         IEnumerable<Note> GetAllByUser(int userId);
 
+        IEnumerable<User> GetAllUsers();
+
         Note GetById(int id);
 
         void Remove(Note note);

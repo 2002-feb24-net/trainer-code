@@ -114,6 +114,7 @@ status codes
 *       406 not acceptable: you used "accept" header and we can't give you that content type
             the server doesn't have to use 406, it can decide to use a fallback media type
         409 conflict: you can't do that because it's inconsistent with something else
+*       415 unsupported media type
         418 i'm a teapot: you asked me to brew coffee
     500 server error
 *       500 internalservererror

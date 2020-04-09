@@ -17,6 +17,6 @@ namespace NotesService.Api.Models
 
         public DateTime DateModified { get; set; } = DateTime.Now;
 
-        public ICollection<Tag> Tags { get; set; } = new List<Tag>();
+        public List<Tag> Tags { get; set; } = new List<Tag>();
     }
 }

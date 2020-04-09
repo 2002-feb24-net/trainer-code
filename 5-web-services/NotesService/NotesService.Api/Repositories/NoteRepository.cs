@@ -99,5 +99,10 @@ namespace NotesService.Api.Repositories
                 .OrderByDescending(n => n.DateModified)
                 .ToList();
         }
+
+        public IEnumerable<User> GetAllUsers()
+        {
+            return _users.ToList();
+        }
     }
 }

@@ -25,6 +25,7 @@ namespace NotesService.Api.Controllers
 
         // GET: api/notes
         [HttpGet]
+        [Produces("application/xml")] // this action method only produces xml media type
         public IActionResult Get([FromQuery] DateTime? since = null)
         {
             IEnumerable<Note> notes = _noteRepository.GetAll(since);
@@ -49,6 +50,7 @@ namespace NotesService.Api.Controllers
 
         // POST: api/notes
         [HttpPost]
+        [Consumes("application/xml")] // this action method won't accept JSON as input, only XML
         public IActionResult Post([FromBody] Note note)
         {
             _noteRepository.Add(note);

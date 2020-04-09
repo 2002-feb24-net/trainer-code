@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Formatters;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -28,7 +29,17 @@ namespace NotesService.Api
         {
             services.AddSingleton<INoteRepository, NoteRepository>();
 
-            services.AddControllers();
+            //services.AddControllers(options =>
+            //{
+            //    options.InputFormatters.Add(new XmlSerializerInputFormatter(options));
+            //    options.OutputFormatters.Add(new XmlSerializerOutputFormatter());
+            //});
+            services.AddControllers(options =>
+            {
+                //options.Filters.Add(new ProducesAttribute("application/xml")); // remember filters can be global too
+            })
+                .AddXmlSerializerFormatters(); // teach asp.net how to both serialize and deserialize
+                                               //using XmlSerializer object. (application / xml)
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

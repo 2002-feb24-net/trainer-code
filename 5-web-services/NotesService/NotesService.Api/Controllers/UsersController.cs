@@ -19,11 +19,11 @@ namespace NotesService.Api.Controllers
             _noteRepository = noteRepository;
         }
 
-        //[HttpGet]
-        //public IActionResult GetAll()
-        //{
-        //    return 
-        //}
+        [HttpGet]
+        public IActionResult GetAll()
+        {
+            return Ok(_noteRepository.GetAllUsers());
+        }
 
         [HttpGet("{userId}/notes")]
         public IActionResult GetNotes(int userId)
