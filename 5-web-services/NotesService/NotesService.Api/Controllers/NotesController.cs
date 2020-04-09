@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
+using System.Text.Json;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
@@ -38,11 +40,22 @@ namespace NotesService.Api.Controllers
                                         // "/{id}" to the controller's overall route, where id is a route parameter
                                         // 2. the route's name is "Get" so it can be referenced elsewhere
                                         // 3. only HTTP GET will be routed to this action method.
-        public IActionResult GetById(int id) // because this says "int", model binding will fail if id wasn't an int
+        public ActionResult<Note> GetById(int id) // because this says "int", model binding will fail if id wasn't an int
         {
             if (_noteRepository.GetById(id) is Note note)
             {
-                return Ok(note);
+                //return StatusCode(StatusCodes.Status500InternalServerError);
+
+                // contentresult gives more control, like this
+                //string json = JsonSerializer.Serialize(note);
+                //return new ContentResult
+                //{
+                //    StatusCode = 200,
+                //    ContentType = "application/json",
+                //    Content = json
+                //};
+
+                return note;
             }
             // otherwise it's null, so no such id found
             return NotFound(); // 404 Not Found response
@@ -51,8 +64,13 @@ namespace NotesService.Api.Controllers
         // POST: api/notes
         [HttpPost]
         [Consumes("application/xml")] // this action method won't accept JSON as input, only XML
+        [ProducesResponseType(201, Type = typeof(Note))]
+        [ProducesResponseType(400)]
         public IActionResult Post([FromBody] Note note)
         {
+            // this code here is effectively automatic because of ApiControllerAttribute
+            // if (!ModelState.IsValid) return BadRequest(ModelState);
+
             _noteRepository.Add(note);
             // id is now set
             return CreatedAtAction(nameof(GetById), new { id = note.Id }, note);
