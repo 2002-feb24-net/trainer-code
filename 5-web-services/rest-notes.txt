@@ -93,8 +93,11 @@ status codes
             NoContent()
     300 redirection
         301 moved permanently: resource isn't here
+            should also include Location header saying where it's at.
 *       302 found: resource isn't here, browser usually automatically requests new URL with GET
-            RedirectTo...(...)
+            temporary redirect
+            should also include Location header saying where it's at.
+            RedirectToAction(...), RedirectToRoute(...)
         304 not modified: you had e.g. "if-modified-since" header, and the resource hasn't been modified
     400 client error
 *       400 bad request. syntax of request is invalid.
@@ -102,14 +105,15 @@ status codes
 *       401 unauthorized: really means unauthenticated. you did not identify yourself.
             Unauthorized()
         402 payment required: meme status code
-*       403 forbidden: the true unauthorized. you dont' ahve the rights to do this
+*       403 forbidden: the true unauthorized. you don't have the rights to do this
             Forbidden()
 *       404 not found
             NotFound()
         405 method not allowed: on this resource
+            implemented by default in asp.net core
 *       406 not acceptable: you used "accept" header and we can't give you that content type
             the server doesn't have to use 406, it can decide to use a fallback media type
-        409 conflict:
+        409 conflict: you can't do that because it's inconsistent with something else
         418 i'm a teapot: you asked me to brew coffee
     500 server error
 *       500 internalservererror
