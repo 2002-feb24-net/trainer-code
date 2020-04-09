@@ -10,5 +10,7 @@ namespace NotesService.Api.Repositories
         IEnumerable<Note> GetAll();
 
         Note GetById(int id);
+
+        void Remove(Note note);
     }
 }

@@ -56,16 +56,35 @@ namespace NotesService.Api.Controllers
             return CreatedAtAction(nameof(GetById), new { id = note.Id }, note);
         }
 
+        // ignores changing the tags
         // PUT: api/notes/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody] string value)
+        public IActionResult Put(int id, [FromBody] Note note)
         {
+            // successful update for PUT returns 204 No Content with empty body, or 200 OK
+            if (_noteRepository.GetById(id) is Note oldNote)
+            {
+                oldNote.DateModified = DateTime.Now;
+                oldNote.Author = note.Author;
+                oldNote.IsPublic = note.IsPublic;
+                oldNote.Text = note.Text;
+                return NoContent();
+                //return StatusCode(204);
+            }
+            return NotFound();
         }
 
         // DELETE: api/notes/5
         [HttpDelete("{id}")]
-        public void Delete(int id)
+        public IActionResult Delete(int id)
         {
+            // successful DELETE returns 204 No Content with empty body
+            if (_noteRepository.GetById(id) is Note note)
+            {
+                _noteRepository.Remove(note);
+                return NoContent();
+            }
+            return NotFound();
         }
     }
 }

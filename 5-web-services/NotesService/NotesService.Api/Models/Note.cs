@@ -9,10 +9,14 @@ namespace NotesService.Api.Models
     {
         public int Id { get; set; }
 
-        public string Author { get; set; }
+        public User Author { get; set; }
 
         public bool IsPublic { get; set; }
 
         public string Text { get; set; }
+
+        public DateTime DateModified { get; set; } = DateTime.Now;
+
+        public ICollection<Tag> Tags { get; set; } = new List<Tag>();
     }
 }
