@@ -2,8 +2,7 @@
   "name": "6-ng-from-scratch",
   "version": "1.0.0",
   "description": "",
-  "scripts": {
-  },
+  "scripts": {},
   "author": "",
   "dependencies": {
     "@angular/common": "~9.1.1",
@@ -17,7 +16,6 @@
     "@angular-devkit/build-angular": "~0.901.1",
     "@angular/compiler-cli": "~9.1.1",
     "@angular/cli": "~9.1.1",
-    "@types/node": "~12.12.6",
     "typescript": "^3.8.3"
   }
 }
