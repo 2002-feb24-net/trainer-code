@@ -21,17 +21,24 @@ export default class Page {
         document.addEventListener('DOMContentLoaded', () => {
             // set up new deck action
             this.newDeck?.addEventListener('click', () => {
-                this.cardService.newDeck().then(() => {
-                    // TODO: empty the card container of any existing cards
-                }, (error: Error) => {
+                // empty the card container of any existing cards
+                while (this.cardContainer?.firstElementChild) {
+                    this.cardContainer?.firstElementChild.remove();
+                }
+
+                this.cardService.newDeck().catch((error: Error) => {
                     // TODO: display error
                 });
             });
 
             // set up draw card action
             this.drawCard?.addEventListener('click', () => {
-                this.cardService.drawCard().then((card: Card) => {
-                    // TODO: add the card to the card container
+                this.cardService.drawCard().then(card => {
+                    // add the card to the card container
+                    const image = document.createElement('img');
+                    image.src = card.image;
+                    image.alt = card.code;
+                    this.cardContainer?.appendChild(image);
                 }, (error: Error) => {
                     // TODO: display error
                 });

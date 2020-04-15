@@ -2,10 +2,9 @@
   "name": "4-typescript",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
   "scripts": {
     "build": "tsc && webpack && cp src/index.html dist/",
-    "start": "http-server dist/"
+    "start": "http-server dist/ -o -c-1"
   },
   "keywords": [],
   "author": "",
