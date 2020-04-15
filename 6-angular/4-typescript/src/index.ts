@@ -1,16 +1,16 @@
+// 1. create folder for this node stuff
+// 2. make package.json with `npm init -y`
+// 3. make sure typescript is globally installed so we can use tsc.
+// 4. run tsc init to get a tsconfig.json file.
+// 5. write some typescript.
+// 6. run `tsc` to convert it to JS.
+
+import StringHelper from "./string-helper";
+import LowercaseStringHelper from "./lowercase-string-helper";
+
 // in TS, any variable without an explicit type
 // is "any" type. this disables all compile-time type checking.
 
-interface StringHelper {
-    formatString(s: string): string;
-}
-
-class LowercaseStringHelper implements StringHelper {
-    formatString(s: string): string {
-        // string interpolation, a JS feature from ES6.
-        return ` ---- ${s.toLowerCase()} ---- `;
-    }
-}
 
 // if you don't specify a type, TS behaves kind of like "var" in C#.
 // const helper = new LowercaseStringHelper();
