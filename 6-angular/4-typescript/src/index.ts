@@ -27,3 +27,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.body.appendChild(element);
 });
+
+// with local NPM installs (in package.json / node_modules)...
+// you can't just run commands based on those packages.
+// you need either NPM scripts (configured in package.json, run with "npm run ___")
+//  ... or, "npx" command
