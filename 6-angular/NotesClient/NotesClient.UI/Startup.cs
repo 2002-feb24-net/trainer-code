@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using NotesClient.ServiceAccess;
 
 namespace NotesClient.UI
 {
@@ -23,6 +24,14 @@ namespace NotesClient.UI
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // get runtime configuration using "options pattern"
+            // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/configuration/options?view=aspnetcore-3.1#suboptions-configuration
+            services.Configure<NotesServiceOptions>(Configuration.GetSection("NotesService"));
+
+            // register service using "typed client" approach
+            // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/http-requests?view=aspnetcore-3.1#typed-clients
+            services.AddHttpClient<INotesService, NotesService>();
+
             services.AddControllersWithViews();
         }
 

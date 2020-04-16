@@ -5,7 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
-using NotesClient.UI.Models;
+using NotesClient.UI.ViewModels;
 
 namespace NotesClient.UI.Controllers
 {
