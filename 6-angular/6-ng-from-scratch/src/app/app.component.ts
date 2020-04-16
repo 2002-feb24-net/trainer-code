@@ -24,10 +24,8 @@ export default class AppComponent {
   // component data/logic goes here
 
   cards: Card[] = []
-  private cardService: CardService;
 
-  constructor(cardService: CardService) {
-    this.cardService = cardService;
+  constructor(private cardService: CardService) {
   }
 
   newDeck() {
