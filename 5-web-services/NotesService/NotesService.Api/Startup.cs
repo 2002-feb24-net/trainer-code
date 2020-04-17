@@ -50,7 +50,9 @@ namespace NotesService.Api
             services.AddCors(options =>
             {
                 options.AddPolicy("AllowLocalAngular", builder => builder
-                    .WithOrigins("http://localhost:4200")
+                    .WithOrigins(
+                        "http://localhost:4200",
+                        "https://2002-ng-notes-client.azurewebsites.net/")
                     .AllowAnyMethod()
                     .AllowAnyHeader());
             });
