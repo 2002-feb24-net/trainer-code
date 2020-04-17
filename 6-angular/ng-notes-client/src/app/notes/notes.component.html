@@ -1,0 +1,10 @@
+<!-- ngIf: if condition, display the div, else don't -->
+<button (click)="getNotes()">Refresh</button>
+<div *ngIf="notes.length > 0">
+  <ol>
+    <li *ngFor="let note of notes">{{ note.text }}</li>
+  </ol>
+</div>
+<div *ngIf="notes.length === 0">
+  no notes found
+</div>
