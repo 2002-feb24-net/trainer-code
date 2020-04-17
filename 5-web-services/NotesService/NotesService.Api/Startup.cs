@@ -52,7 +52,7 @@ namespace NotesService.Api
                 options.AddPolicy("AllowLocalAndAppServiceAngular", builder => builder
                     .WithOrigins(
                         "http://localhost:4200",
-                        "https://2002-ng-notes-client.azurewebsites.net/")
+                        "https://2002-ng-notes-client.azurewebsites.net")
                     .AllowAnyMethod()
                     .AllowAnyHeader());
             });
