@@ -18,8 +18,8 @@ export class NotesComponent implements OnInit {
   // ngOnInit is a "lifecycle hook"
   ngOnInit(): void {
     // once the DOM is ready, i want to send my http requests
-    // and eventually put the notes into the proerty and thus
-    // via data binding, the DOM.i
+    // and eventually put the notes into the property and thus
+    // via data binding, the DOM.
     this.getNotes();
   }
 
