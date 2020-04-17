@@ -1,10 +1,14 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { NotesComponent } from './notes/notes.component';
+import { NavbarComponent } from './navbar/navbar.component';
+import CardComponent from './card/card.component';
+import CardService from './card-service';
 
 // we divide up the app into several angular modules
 // based on features / parts of the website
@@ -25,7 +29,9 @@ import { NotesComponent } from './notes/notes.component';
   // every component, directive, or pipe needs to be declared in one module
   declarations: [
     AppComponent,
-    NotesComponent
+    NotesComponent,
+    NavbarComponent,
+    CardComponent
   ],
   // if anything declared by this module needs anything declared by or provided by another module...
   // you need to import that other module here. this is *sort-of* like a project- or package-reference in .NET
@@ -34,7 +40,8 @@ import { NotesComponent } from './notes/notes.component';
   imports: [
     BrowserModule,
     HttpClientModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule
   ],
   // things declared in a module are not visible to other modules by default
   // if you want e.g. some component declared in this module to be used in another module...
@@ -42,7 +49,9 @@ import { NotesComponent } from './notes/notes.component';
   exports: [
   ],
   // we can register services here, scoped to the module
-  providers: [],
+  providers: [
+    CardService
+  ],
   // specifically for the root module, it should reference the root component
   // here in the bootstrap array
   bootstrap: [AppComponent]

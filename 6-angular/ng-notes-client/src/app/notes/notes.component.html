@@ -8,3 +8,16 @@
 <div *ngIf="notes.length === 0">
   no notes found
 </div>
+
+<form [formGroup]="createNoteForm" (ngSubmit)="createNote()">
+  <label>
+    Note:
+    <input type="text" formControlName="text" required>
+  </label>
+
+  <button type="submit" [disabled]="!createNoteForm.valid">Submit</button>
+</form>
+
+<div *ngIf="error" class="error">
+  {{ error }}
+</div>

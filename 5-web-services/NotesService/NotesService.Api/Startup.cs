@@ -49,10 +49,10 @@ namespace NotesService.Api
 
             services.AddCors(options =>
             {
-                options.AddPolicy("AllowLocalAngular", builder =>
-                {
-                    builder.WithOrigins("http://localhost:4200");
-                });
+                options.AddPolicy("AllowLocalAngular", builder => builder
+                    .WithOrigins("http://localhost:4200")
+                    .AllowAnyMethod()
+                    .AllowAnyHeader());
             });
         }
 

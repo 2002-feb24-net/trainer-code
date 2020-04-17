@@ -1,6 +1,6 @@
 export default interface Note {
-  id: number;
+  id?: number;
   isPublic: boolean;
   text?: string;
-  dateModified: Date;
+  dateModified?: Date;
 }
