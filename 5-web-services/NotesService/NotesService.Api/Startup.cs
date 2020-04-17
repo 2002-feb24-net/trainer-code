@@ -46,6 +46,14 @@ namespace NotesService.Api
             })
                 .AddXmlSerializerFormatters(); // teach asp.net how to both serialize and deserialize
                                                //using XmlSerializer object. (application / xml)
+
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowLocalAngular", builder =>
+                {
+                    builder.WithOrigins("http://localhost:4200");
+                });
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,6 +67,8 @@ namespace NotesService.Api
             app.UseHttpsRedirection();
 
             app.UseRouting();
+
+            app.UseCors("AllowLocalAngular");
 
             app.UseAuthorization();
 
