@@ -2,7 +2,8 @@
 # where it sends the build context to the Docker daemon
 
 # unfortunately the syntax is not exactly the same as .gitignore
-bin
-obj
-publish
-.vscode
+**/bin
+**/obj
+**/publish
+**/.vscode
+**/.vs

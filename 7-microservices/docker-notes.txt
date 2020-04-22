@@ -16,6 +16,8 @@ docker run <image-name>
     "-it" options after "run" we need when the CMD is some shell like bash,
         to attach the container's input to the current terminal's input.
     "-d" option, alternative to "-it", detach container from current terminal (run in background)
+    (without either of those options, console input may not work, and
+        Ctrl+C just detaches from the container, rather than stopping)
 docker container ls
     show all running containers
     "-a" option: show all running or stopped containers
@@ -23,8 +25,10 @@ docker container prune
     remove all stopped containers
 docker run --rm <image-name>
     run container, and clean it up as soon as it has stopped
+docker stop <container-id>
+    stop a running container.
 docker rm <container-id>
-    clean up stopped container
+    clean up a stopped container
 docker rm -f <container-id>
     stop and clean up container
 docker images ls
