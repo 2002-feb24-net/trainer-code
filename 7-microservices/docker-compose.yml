@@ -1,0 +1,21 @@
+version: '3'
+
+services:
+  web:
+    image: nicholasescalona/restreviews:3.0
+    build:
+      context: ../../nick-project1
+      dockerfile: RestaurantReviewsMvc.Dockerfile
+      args:
+        DOTNET_VERSION: '3.1'
+    environment:
+      ConnectionStrings__RestaurantReviewsDb: 'Server=data;Initial Catalog=RestaurantReviewsDb;User ID=sa;Password=Password123'
+    ports:
+      - 8000:80
+  data:
+    image: mcr.microsoft.com/mssql/server:2019-latest
+    environment:
+      ACCEPT_EULA: 'Y'
+      SA_PASSWORD: Password123
+    ports:
+      - 1433:1433
