@@ -17,8 +17,8 @@ some commands:
         delete a directory with its contents
     mv <path1> <path2>
         rename/move a file/directory
-    touch
-        create a file
+    touch <path>
+        create an empty file
     pwd
         print working directory (folder you're in right now)
 
